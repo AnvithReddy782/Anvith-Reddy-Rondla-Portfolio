@@ -15,22 +15,21 @@ export default function SpatialCanvas({ children }: SpatialCanvasProps) {
     return (
         <div ref={containerRef} className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
             <Canvas
-                shadows
                 gl={{ antialias: true, alpha: true }}
                 dpr={[1, 2]}
                 eventSource={typeof window !== 'undefined' ? window : undefined}
             >
-                <PerspectiveCamera makeDefault position={[0, 0, 20]} fov={45} />
+                <PerspectiveCamera makeDefault position={[0, 0, 100]} fov={30} />
 
-                <ambientLight intensity={0.2} />
+                <ambientLight intensity={1.0} />
 
                 <BlueprintGrid />
 
-                <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
+                <Float speed={0} rotationIntensity={0} floatIntensity={0}>
                     {children}
                 </Float>
 
-                <Environment preset="night" />
+                <Environment preset="city" />
             </Canvas>
         </div>
     );

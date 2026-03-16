@@ -1,31 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  /* Cinematic Color Palette - Translucent Variants */
-  --color-bg-0: #050505;
-  --color-bg-1: #0A0A0A;
+  /* Cinematic Color Palette - Premium Light Mode (Paper White) */
+  --color-bg-0: #F9F9F7;
+  --color-bg-1: #F2F2EF;
 
-  --color-surface-0: rgba(10, 10, 10, 0.4);
-  --color-surface-1: rgba(15, 15, 15, 0.6);
-  --color-surface-2: rgba(20, 20, 20, 0.8);
-  --color-surface-3: rgba(25, 25, 25, 0.9);
+  --color-surface-0: rgba(255, 255, 255, 0.4);
+  --color-surface-1: rgba(255, 255, 255, 0.6);
+  --color-surface-2: rgba(255, 255, 255, 0.8);
+  --color-surface-3: rgba(255, 255, 255, 0.9);
 
-  --color-text-0: #FFFFFF;
-  --color-text-1: #A1A1AA;
-  --color-text-2: #71717A;
+  --color-text-0: #1A1A1A;
+  --color-text-1: #4A4A4A;
+  --color-text-2: #717171;
 
   --color-orange: #FF5C00;
-  --color-orange-dim: rgba(255, 92, 0, 0.1);
-  --color-orange-border: rgba(255, 92, 0, 0.2);
+  --color-orange-dim: rgba(255, 92, 0, 0.05);
+  --color-orange-border: rgba(255, 92, 0, 0.15);
 
   --color-teal: #00B4A6;
-  --color-teal-dim: rgba(0, 180, 166, 0.1);
-  --color-teal-border: rgba(0, 180, 166, 0.2);
+  --color-teal-dim: rgba(0, 180, 166, 0.05);
+  --color-teal-border: rgba(0, 180, 166, 0.15);
 
-  --color-border-0: rgba(255, 255, 255, 0.03);
-  --color-border-1: rgba(255, 255, 255, 0.06);
-  --color-border-2: rgba(255, 255, 255, 0.1);
-  --color-border-3: rgba(255, 255, 255, 0.2);
+  --color-border-0: rgba(0, 0, 0, 0.03);
+  --color-border-1: rgba(0, 0, 0, 0.06);
+  --color-border-2: rgba(0, 0, 0, 0.1);
+  --color-border-3: rgba(0, 0, 0, 0.2);
 
   /* Elevation Tokens - Layered Shadows */
   --shadow-axiom-sm: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.1);
