@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
 import ClientProviders from "@/components/ClientProviders";
+import SpatialCanvas from "@/components/canvas/SpatialCanvas";
 
 export const viewport: Viewport = {
     themeColor: "#0a0a0a",
@@ -66,6 +67,7 @@ export default function RootLayout({
             </head>
             <body className="antialiased font-body bg-bg-0 text-text-primary">
                 <div className="grain-overlay" />
+                <SpatialCanvas />
                 <ClientProviders>
                     {children}
                 </ClientProviders>
