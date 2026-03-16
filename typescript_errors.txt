@@ -1,0 +1,60 @@
+﻿src/app/page.tsx(30,32): error TS2322: Type '({ id: string; name: string; description: string; techStack: string[]; category: string; metric: string; } | null)[]' is not assignable to type 'Project[]'.
+  Type '{ id: string; name: string; description: string; techStack: string[]; category: string; metric: string; } | null' is not assignable to type 'Project'.
+    Type 'null' is not assignable to type 'Project'.
+src/components/HeroSection.tsx(60,29): error TS2322: Type '{ hidden: { y: number; opacity: number; }; visible: { y: number; opacity: number; transition: { duration: number; ease: number[]; }; }; }' is not assignable to type 'Variants'.
+  Property 'visible' is incompatible with index signature.
+    Type '{ y: number; opacity: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type 'Variant'.
+      Type '{ y: number; opacity: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ y: number; opacity: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ duration: number; ease: number[]; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ duration: number; ease: number[]; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ duration: number; ease: number[]; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'ease' are incompatible.
+                    Type 'number[]' is not assignable to type 'Easing | Easing[] | undefined'.
+                      Type 'number[]' is not assignable to type 'EasingFunction | Easing[]'.
+                        Type 'number[]' is not assignable to type 'Easing[]'.
+                          Type 'number' is not assignable to type 'Easing'.
+src/components/HeroSection.tsx(66,21): error TS2322: Type '{ hidden: { y: number; opacity: number; }; visible: { y: number; opacity: number; transition: { duration: number; ease: number[]; }; }; }' is not assignable to type 'Variants'.
+  Property 'visible' is incompatible with index signature.
+    Type '{ y: number; opacity: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type 'Variant'.
+      Type '{ y: number; opacity: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ y: number; opacity: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ duration: number; ease: number[]; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ duration: number; ease: number[]; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ duration: number; ease: number[]; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'ease' are incompatible.
+                    Type 'number[]' is not assignable to type 'Easing | Easing[] | undefined'.
+                      Type 'number[]' is not assignable to type 'EasingFunction | Easing[]'.
+                        Type 'number[]' is not assignable to type 'Easing[]'.
+                          Type 'number' is not assignable to type 'Easing'.
+src/components/HeroSection.tsx(74,21): error TS2322: Type '{ hidden: { y: number; opacity: number; }; visible: { y: number; opacity: number; transition: { duration: number; ease: number[]; }; }; }' is not assignable to type 'Variants'.
+  Property 'visible' is incompatible with index signature.
+    Type '{ y: number; opacity: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type 'Variant'.
+      Type '{ y: number; opacity: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ y: number; opacity: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ duration: number; ease: number[]; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ duration: number; ease: number[]; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ duration: number; ease: number[]; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'ease' are incompatible.
+                    Type 'number[]' is not assignable to type 'Easing | Easing[] | undefined'.
+                      Type 'number[]' is not assignable to type 'EasingFunction | Easing[]'.
+                        Type 'number[]' is not assignable to type 'Easing[]'.
+                          Type 'number' is not assignable to type 'Easing'.
+src/components/HeroSection.tsx(81,29): error TS2322: Type '{ hidden: { y: number; opacity: number; }; visible: { y: number; opacity: number; transition: { duration: number; ease: number[]; }; }; }' is not assignable to type 'Variants'.
+  Property 'visible' is incompatible with index signature.
+    Type '{ y: number; opacity: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type 'Variant'.
+      Type '{ y: number; opacity: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ y: number; opacity: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ duration: number; ease: number[]; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ duration: number; ease: number[]; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ duration: number; ease: number[]; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'ease' are incompatible.
+                    Type 'number[]' is not assignable to type 'Easing | Easing[] | undefined'.
+                      Type 'number[]' is not assignable to type 'EasingFunction | Easing[]'.
+                        Type 'number[]' is not assignable to type 'Easing[]'.
+                          Type 'number' is not assignable to type 'Easing'.
+src/components/ProjectMosaic.tsx(80,60): error TS7006: Parameter 'tech' implicitly has an 'any' type.

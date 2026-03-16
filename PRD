@@ -1,0 +1,950 @@
+# Anvith Reddy Rondla — Personal Portfolio
+## Product Requirements Document — Complete & Final
+
+**Owner:** Anvith Reddy Rondla  
+**Current Role:** Junior Product Manager · Systems Builder · AI Generalist  
+**Company:** GlobusIT (promoted from Data Analyst → Junior PM, December 2024)  
+**Location:** India  
+**Stack:** Next.js 14 · TypeScript · Tailwind CSS  
+
+---
+
+## How to Use This Document
+
+Read this completely before writing a single line of code. Every decision here traces back to something real about Anvith — his actual story, his actual projects, his actual way of working. When this document is silent on a detail, make the choice that reflects a person who thinks deeply before building and builds things nobody asked him to build.
+
+No content in this portfolio is invented. No metrics are rounded estimates. No project descriptions are aspirational. Everything is real, specific, and verifiable — because Anvith's actual story is more compelling than anything made up.
+
+---
+
+## Part 1: Who Anvith Is
+
+### The Real Story
+
+Anvith joined GlobusIT in late 2024 as a Data Analyst. His first observation: field worker data for a state government telecom project (T-Fiber) was being collected through WhatsApp. A communication app. Not a data system. Nobody asked him to fix this. He identified the gap, taught himself Google Apps Script, built a collection system, automated the reporting hierarchy, and kept going.
+
+Two months after joining, management promoted him to Junior PM. Not because he lobbied for it. Because they watched him plan a product, build it completely alone, document it with BRDs and ERDs and user flow documents, train field employees across eight districts, collect feedback, and ship updates — all while doing his original job.
+
+By March 2025 he has ten shipped or near-shipped products. Two Indian states. 152 employees tracked. ₹0 in infrastructure costs across all systems. Every product built solo. Every product documented before a line of code was written.
+
+He migrated himself from Google Apps Script to React 18 to Next.js 16 not through tutorials — through production systems built under real constraints for real government contracts. Each technology was learned by shipping something that required it.
+
+He says this about himself: "I can fix it and I can make it work as a product." That sentence is the complete philosophy. Not perfectionism about implementation. Total commitment to outcome.
+
+### The Three Things This Portfolio Proves
+
+**1. The builder instinct is real.** He does not wait to be asked. He sees gaps other people accept as permanent. The WhatsApp-to-production migration is documented here. So are nine other products built on the same instinct.
+
+**2. The PM discipline existed before the title.** Every product has BRDs, ERDs, and atomic user flow documentation. The December 2024 promotion made official something that was already happening.
+
+**3. The trajectory is steep and accelerating.** Google Apps Script → React → Next.js → Supabase → Prisma → real-time systems. Each project is harder than the last. The arc visible in the portfolio is more impressive than any credential.
+
+### The Thesis
+
+Every visitor should understand this within ten seconds of landing:
+
+**"Promoted to Junior PM in two months. For building ten products nobody asked for."**
+
+That sentence is true. It is specific. It is impossible to fake. The entire portfolio is the evidence.
+
+---
+
+## Part 2: The Ten Real Projects
+
+These are the exact products with exact tech stacks. No simplification, no summarizing into fewer items. All ten deserve to be shown.
+
+---
+
+**01 — Annapurna Collections**  
+*Production-Ready (92%) · Built for his mother's heritage jewelry business*  
+Stack: Next.js 16 App Router · Tailwind CSS 4 · Framer Motion 12 · Zustand 5 · Lenis · Sanity v5 (GROQ) · Razorpay · NextAuth v5  
+Key Details: Luxury editorial visual direction. Playfair Display + Great Vibes fonts. Cinematic home page. Server-validated cart calculations. Idempotent Razorpay webhook finalization. Sequential order IDs via Sanity counter document. Sanity-driven coupon system with usage limits. Complete CMS for product, order, offer, and frontend management.  
+The Story: His mother told him she wanted to grow her business. He designed the entire system — storefront and CMS — from nothing. Personal motivation, professional execution.
+
+---
+
+**02 — DOC AI (DocuFlow)**  
+*Functional (90%) · AI document formatting workstation*  
+Stack: React 19 · Vite 6 · TypeScript · Google Gemini 2.5 · OpenRouter · Mermaid.js  
+Key Details: 14 document templates across 6 style presets. Pipeline: Acceptance → Text Chunking → Blueprint Generation → Stream Processing → Refinement. Automated QA suite (test_prd.ts, verify_strict_mode.ts) validating reconstruction and content preservation. Split workspace with dark header and option-rich sidebar.  
+The Story: Anvith documents every product he builds. He noticed he spent time reformatting documents that could be automated. He built the automation.
+
+---
+
+**03 — DPMUMS (District Project Management Unit Management System)**  
+*In Development (65%) · Bihar state government contract*  
+Stack: Next.js 16 · Supabase (PostgreSQL) · Pusher (Real-time) · Dexie (Offline IndexedDB) · Tailwind CSS 4  
+Key Details: 152 employees, 64 positions across two states. 4-slot daily attendance with GPS geofencing (100m radius) and mandatory photo selfie verification. Multi-level leave approval chain (Staff → DIL → Admin). Role-based portal redirects. Offline-capable via Dexie. Admin can configure all rules, employees, geofence boundaries without touching code. Desktop admin + mobile field UI split.  
+The Story: Bihar came in as a new state contract. No existing tool could do what was needed. Anvith built the replacement.
+
+---
+
+**04 — GlobusIT ERP**  
+*In Development (55%) · Internal organizational platform*  
+Stack: Next.js 15 · Prisma 5 · SQLite/PostgreSQL · TanStack Query · Zustand · TipTap (Rich Text) · dnd-kit (Kanban)  
+Key Details: "Task Intent" model for smart task ordering and hierarchical subtask support. Hierarchical parent-child department relationships powering a visual Org Chart. Executive/Manager/Employee dashboard splits. Searchable employee directory. Kanban boards with drag-and-drop. Database seeding scripts for rapid bootstrapping.  
+The Story: A product built for the company's own internal operations. Demonstrates PM thinking applied to internal tooling.
+
+---
+
+**05 — Vantage OS v6**  
+*Functional (85%) · Multi-context finance tracker*  
+Stack: React 18 · Vite 5 · Lucide React · Google Apps Script backend · Firebase  
+Key Details: Three financial contexts — shared office funds, private personal funds, person-to-person debt — with PIN-based context switching. Bill splitting automatically generates Udhaar (debt) records. Mobile-first dark theme with glassy overlays and floating bottom navigation. Receipt support. A Next.js v2 rewrite (vantage-v2) with Prisma and account abstraction is in progress.  
+The Story: A finance tracker for real daily use across multiple contexts. One of the few personal-use products in the collection.
+
+---
+
+**06 — Field Reporter**  
+*Functional (80%) · T-Fiber telecom field workforce app*  
+Stack: Google Apps Script Web App · HTML5 · Vanilla JS · Google Maps/Geolocation API  
+Key Details: Strict 3-phase workflow: Plan (DPI) → Patrol (DPR) → Report (DPO). 6-state engine (Idle → Checked-In → Active → Submitted → Pending Sync → Overdue). Role-specific flows for GP Techs, Field Engineers, and Zonal Patrollers. Geotagged selfie check-in. Activity logging with proof attachment. Camera-to-Base64 photo pipeline. localStorage state management.  
+The Story: The commercial tracking tool was discontinued. Field workers had no replacement. Anvith built one without being asked.
+
+---
+
+**07 — Reports Automation**  
+*Production (95%) · Automated field reporting system*  
+Stack: Google Apps Script v102.0 · Gmail (HTML reports) · Google Chat Webhooks  
+Key Details: 13 defined roles influencing report content and dashboard views. Scheduled morning and EOD report generation. 5-minute incident polling with Google Chat webhook notifications. Role-based data — each person in the hierarchy receives only their own data. HTML dashboard embedded in the email plus Excel attachment. Health checks and custom menu UI. In-sheet visual dashboard creators.  
+The Story: The most purely automated product in the collection. Runs without human intervention. Delivers the right data to the right person at the right time, every day.
+
+---
+
+**08 — Span Finder Pro**  
+*Functional (90%) · Geospatial telecom infrastructure lookup*  
+Stack: Google Apps Script · Leaflet 1.9 · MarkerCluster · GeoJSON  
+Key Details: Finds nearest OLT, ONT, Joint, and OFC telecom infrastructure. Tile-based spatial indexing at 0.005° tiles for high-precision neighbor search. Three-tier caching: runtime cache, Script CacheService, precomputed result cache. Mobile-aware map interface. Precision level toggles: Standard, High, Ultra. Layer-based color coding.  
+The Story: Infrastructure-level thinking applied to a field lookup problem. The tile-based indexing and three-tier caching are engineering decisions, not just implementation.
+
+---
+
+**09 — BSEC Employee Recruitment (ERP/CRM)**  
+*Functional (75%) · Lightweight contact management and sales*  
+Stack: Google Apps Script · Google Sheets (as relational DB) · Bootstrap 5  
+Key Details: Tab-as-table relational model. Generic CRUD engine (dbInsert, dbUpdate). Session gating via _Config_Users sheet. Fixed sidebar Bootstrap admin shell. Dynamic content injection via loadPage JS.  
+The Story: A complete ERP/CRM built before Anvith moved to React. Shows where the Apps Script capabilities cap out and why the migration to Next.js happened.
+
+---
+
+**10 — Google Apps Script Utility Collection**  
+*Archive (100%) · Reusable script vault*  
+Stack: Google Apps Script · Python  
+Contents: Form Creator from Spreadsheet, DDPR Form Creator, PKG-A GP Inventory, Mandal Sheet Verification, Script to Download Images, Python WhatsApp Messages automation.  
+The Story: The foundation. The scripts that proved the approach before any product was built. Shown as provenance, not as current work.
+
+---
+
+## Part 3: Design Concept
+
+### The Central Idea: The Builder's Notebook
+
+Anvith plans before he builds. Every product in this portfolio started with documents — structure before code, data model before interface, system before implementation. The portfolio's visual language makes this way of thinking tangible without announcing it.
+
+The base layer of every page is a dot grid — the visual language of graph paper, engineering notebooks, whiteboard planning sessions. Barely visible. More sensed than seen. Zero JavaScript cost (pure CSS background-pattern).
+
+This is not decoration. It is the one visual choice that could only belong to a portfolio built by someone who writes the BRD before opening the IDE. No other portfolio does this. No visitor will consciously notice why it feels different from every other dark portfolio — but they will feel it.
+
+### The Unexpected Opening: Work Before Person
+
+The page loads instantly. For two seconds, the background shows blurred fragments of real product UIs — the DPMUMS geofence map, the Annapurna Collections storefront, the Field Reporter state interface, the Span Finder Pro map. They are not decorative. They are evidence. The work is present before the person's name appears.
+
+Then, with a precise clip-path wipe from left, the name assembles over the evidence:
+
+**ANVITH REDDY RONDLA**
+
+In Clash Display 700, at the maximum size that fits on one line. No particle physics. No animation tricks. The confidence of someone who has nothing to hide behind effects.
+
+Below the name, three lines appear via the same wipe:
+
+```
+Junior Product Manager  
+Systems Builder · AI Generalist  
+Promoted for shipping. Not for credentials.
+```
+
+The third line stops people. It is true. It is specific. It cannot be said without the evidence that follows it.
+
+### The Palette
+
+**Background:** #0A0A0A — committed black  
+**Surface (cards/panels):** #141414  
+**Raised (hover/active):** #1C1C1C  
+**Text primary:** #F2EDE4 — warm off-white, paper not screen  
+**Text muted:** #888580  
+**Text faint:** #3A3836  
+**Borders:** rgba(242, 237, 228, 0.08) default · 0.14 hover · 0.24 active  
+
+**Saffron Orange #FF6B00** — primary accent. Action, building, shipping. References T-Fiber telecom energy. Used on the single most important element per section — one or two instances, never more. Orange means: look here.
+
+**Precision Teal #00B4A6** — secondary accent. Live systems, automation outputs, AI, success states. The pulsing dot on a live product. Streaming AI chat text. A geofence boundary. Means: this is running right now.
+
+**Documentation Violet #7C6FF7** — third accent. PM work, strategic thinking, BRDs, the "before the build" layer. The color of planning. Means: this was thought through.
+
+These three colors are a semantic system that maps directly to Anvith's three identities. They are not interchangeable. A visitor learns to read them without being taught.
+
+### Typography
+
+**Clash Display** — geometric display font with strong presence at large sizes. Free via Fontshare. When "ANVITH REDDY RONDLA" is set at 120px+ in this font, it reads as a statement, not a label.
+
+**General Sans** — geometric with humanist corrections. Free via Fontshare. Technical precision without corporate coldness. For all body text, navigation, cards, and UI.
+
+**JetBrains Mono** — for all technical content. Tags, terminal output, code, metadata, timestamps, status indicators. Beautiful as well as functional.
+
+### Typography Rules
+
+Display type above 48px: letter-spacing -0.025em minimum. Large text must be tight.  
+Section headings 24–48px: letter-spacing -0.015em.  
+Body text: line-height 1.75. Never 1.5 (browser default). Never 2.0.  
+Uppercase mono labels only: letter-spacing 0.08em. Nothing else gets positive tracking.  
+Body text line length: 68 characters maximum. Never wider.  
+Minimum body font size: 15px on any device.  
+Minimum any text: 12px on any device.
+
+### The Anti-Pattern Blacklist
+
+Every item on this list has been seen three times today on other portfolios. None appear here.
+
+Purple or indigo as primary accent. Glassmorphism cards with backdrop-filter blur. Gradient text via background-clip. Teal and coral together. Three identical feature cards in a row. A sticky nav that fades to frosted glass on scroll. Scale(1.05) on card hover. Opacity: 0.8 as a hover state. Transition: all 0.3s ease on anything. Inter, Roboto, DM Sans, or any AI design tool default font. The testimonials carousel. The skills section with progress bars. Any layout that resembles a Webflow template.
+
+---
+
+## Part 4: The Full Homepage
+
+### Section 01 — The Entry
+
+**The dot grid activates.** The background shows blurred product UI fragments for two seconds. Then the clip-path wipe. The name. The three lines.
+
+Immediately below, a status strip in small JetBrains Mono:
+
+```
+BUILDING NOW   →   DPMUMS v1.0 — testing  
+LAST SHIPPED   →   Reports Automation v102.0 — production  
+LOCATION       →   India  
+AVAILABLE      →   Open to PM opportunities  
+```
+
+One line below that, slightly separated, in orange:
+
+```
+10 products · 2 Indian states · ₹0 infrastructure cost · 0 team members
+```
+
+That line is true. It is the most compressed summary of the portfolio's argument. It precedes everything else.
+
+The hero background: the dot grid and the blurred product fragments. Two scroll-speed layers creating depth without WebGL. The fragments closest to the viewer parallax at 0.8x scroll speed. Those behind parallax at 0.5x. The effect is spatial without being showy.
+
+---
+
+### Section 02 — About: The Person Behind the Products
+
+**Layout:** 45/55 split on desktop, stacked on mobile.
+
+**Left — The Photo:**  
+Not a headshot in a round container. A card with true three-dimensional tilt tracking the cursor, as if it is a physical object on a surface. Light source tracks cursor position. The reflection on the card surface shifts. Behind the card: a color-saturated, heavily blurred duplicate creating an aura that changes with the card's dominant colors.
+
+Below the photo card, the "currently" block — four live indicators from a config JSON:
+
+```
+BUILDING    DPMUMS v1.0 — GPS geofencing + real-time attendance
+READING     [developer fills in]
+THINKING    [developer fills in]
+LAST DEPLOY [auto-populated from GitHub]
+```
+
+**Right — The Story:**  
+The name again, smaller this time — not for display, for reading.
+
+The bio paragraph. Written entirely by Anvith. The guidance: start with the gap you saw at T-Fiber. Not "I am passionate about." Not a skill list. The story of what you built before anyone asked you to. Twelve sentences maximum. Sound like a person talking to a smart friend.
+
+Below the bio, four statements in body size that could only belong to Anvith:
+
+```
+01  Every product I ship starts with a BRD. Not because I was told to.
+02  I learned Next.js by deploying it to a state government contract.
+03  I use AI to move faster, not to skip thinking.
+04  Everything I have ever built still runs in production.
+```
+
+These are confirmed facts. Anvith reviews and adjusts them.
+
+**The Skill Visualization — The Neural Web:**  
+Where other portfolios put a progress bar list, this portfolio puts an interactive neural network. Skills are nodes. Related skills have animated electrical impulses traveling between them. The connections tell the story — "Product Strategy" fires connections to "Roadmapping," "User Research," "Stakeholder Management," and back to "Shipping Fast." The relationships are the insight.
+
+Hover any node: its direct connections illuminate, the rest dim. Click any node: the entire network reorganizes around that skill as the center. A tooltip shows: skill name, a one-sentence description of depth, and the specific product where it was used.
+
+On small phones: the neural web simplifies to a grouped tag cloud, sized by proficiency level, colored by category (orange: product, teal: technical/AI, violet: PM/strategy). Information-equivalent. Format-appropriate.
+
+---
+
+### Section 03 — Products Built
+
+The section is titled **"Products Built"** — not "Projects," not "Work," not "Portfolio." These are products. They have users. They run in production.
+
+Before the first product card, one line that sets up everything:
+
+**"Four government-scale systems. One luxury e-commerce platform. One AI workstation. Four utilities. One developer. Zero budget."**
+
+**The Product Grid Layout:**
+
+The ten products are organized by maturity and scale — not by date, not alphabetically.
+
+**Tier 1 — Production / Near-Production (4 cards):**  
+Annapurna Collections · Reports Automation · Span Finder Pro · DOC AI
+
+**Tier 2 — Active Systems (3 cards):**  
+DPMUMS · Field Reporter · Vantage OS
+
+**Tier 3 — In Development (2 cards):**  
+GlobusIT ERP · BSEC Employee Recruitment
+
+**Archive (1 card):**  
+Google Apps Script Utility Collection
+
+**Each Card Contains:**
+
+- Product name in Clash Display medium
+- A real product screenshot in an appropriate device frame (laptop browser for desktop apps, mobile frame for Field Reporter and Vantage OS, split frame showing both desktop and mobile for DPMUMS)
+- Status badge: PRODUCTION / TESTING / IN DEVELOPMENT / FUNCTIONAL / ARCHIVE
+- The single most important metric or number for that product
+- Tech stack in small teal pill badges — the actual stack, not a simplified version
+- Two action links: Case Study → and (where applicable) Live →
+
+**The Indicators that appear on cards:**
+
+A small single-person icon labeled **"Solo build"** appears on every product built without a development team. This is nine of the ten products. Seeing it nine times is the point.
+
+On Field Reporter and the early Apps Script systems: a small secondary label **"Built without being asked."** Four words. More credible than a paragraph about initiative.
+
+On DPMUMS: a visible callout box — **"₹0 infrastructure cost"** with the estimated commercial equivalent below it. The gap is a demonstration.
+
+**The Progression Lines:**  
+Between product cards in the grid, thin connector lines show the evolution. Field Reporter → Reports Automation (same codebase, different scope). Field Reporter → DPMUMS (same problem, next technology). Apps Script collection → BSEC → Field Reporter (Apps Script mastered then applied). The connections are labeled with what was learned. The work compounds.
+
+**On hover (desktop):** the screenshot zooms slightly within its frame. A summary panel slides up from the bottom: three-sentence product description, the key business logic in one bullet, a "Read full case study →" link.
+
+**Card click → FLIP transition:** the card expands to fill the viewport and becomes the case study page. No separate navigation. The visitor zoomed in.
+
+---
+
+### Section 04 — The Migration Story: "From WhatsApp to Production"
+
+A dedicated section. Titled exactly that.
+
+A horizontal timeline on desktop (vertical on mobile) showing the technical evolution:
+
+```
+Late 2024                 Dec 2024              Jan 2025              Mar 2025
+Data via WhatsApp    →    Google Apps Script →  React 18         →    Next.js 16
+Manual Excel              Field Reporter        Vantage OS            DPMUMS
+No validation             Reports Automation    Vantage v2 start      Annapurna Collections
+                          Span Finder Pro                             GlobusIT ERP
+                          BSEC ERP
+```
+
+Below each stage, two lines: the constraint that existed at that stage, and the problem that forced the move to the next one.
+
+Apps Script worked until DPMUMS needed real-time push notifications and offline capability. React worked until the admin dashboard required server-side rendering and the API routing became unmanageable. Not a learning journey — a problem-to-solution story repeated at increasing scale.
+
+Each stage node is sized proportionally to the number of active users on the systems built there.
+
+---
+
+### Section 05 — The PM Layer: "The Work Before the Work"
+
+This section exists because Anvith documents before building and most portfolios never show this. It is the evidence that the PM promotion reflected something already present, not something granted.
+
+**Three collapsible artifact previews:**
+
+**A BRD Excerpt** — from one of the major products (sensitivity-redacted). Showing: problem statement, scope definition, user personas, functional requirements, acceptance criteria. Structured, formal, complete.
+
+**An ERD** — the actual data model for one of the products. Tables, relationships, cardinalities, foreign keys. The architectural thinking made visible before implementation began.
+
+**A User Flow Document** — the DPMUMS attendance flow or the Field Reporter 6-state machine as a formal user flow document with decision nodes and edge conditions.
+
+Below the documents, in large body type:
+
+```
+Every product I ship starts with a document.  
+Not because someone told me to.  
+Because I learned what happens when you don't.
+```
+
+In orange, as a callout:
+
+```
+10 products → 10 BRDs → 10 ERDs → 10 user flows. No exceptions.
+```
+
+---
+
+### Section 06 — Systems Running: "Automations in Production"
+
+This section shows systems that are actively operating today.
+
+**Three animated flow diagrams** — interactive node graphs where data pulses travel along connectors showing direction and flow:
+
+**The Reports Hierarchy Flow:** Trigger fires at 6:00 AM. Data collected from field. Reports generated per role (13 roles, 13 different data views). Emails dispatch to each level of the hierarchy with only that level's data. Google Chat webhook fires for incidents. The entire process runs without human intervention. The visitor can click any node for the detail.
+
+**The DPMUMS Attendance Flow:** GPS location check → 100m geofence validation → photo selfie capture → 4-slot daily attendance recording → multi-level approval chain → admin analytics dashboard.
+
+**The T-Fiber Data Evolution:** Two-state visualization. Left (faded, dimmed): WhatsApp → manual Excel compilation → no validation → delays → data loss. Right (active, teal): Google Forms → Apps Script validation → automated sheet population → role-based report generation → hierarchical email delivery.
+
+A draggable before/after reveal handle separates the two states. The visitor drags to expose the transformation. No explanation needed.
+
+**Impact counter:** One large animated number — total hours automated per month across all running systems. Rolls up from zero on scroll entry, once per session. Context below it: what those hours were previously spent doing.
+
+---
+
+### Section 07 — At Scale: The Government Section
+
+A section that earns its right to exist by stating facts without embellishment.
+
+A simple outline map of India. Two states filled with the orange accent: Telangana and Bihar.
+
+Below the map, in JetBrains Mono:
+
+```
+2     Indian states with systems running in production
+8     districts — Telangana T-Fiber project
+64    positions placed — Bihar DPMU project
+152   employees tracked across roles and geographies
+13    org chart roles receiving automated custom reports
+1     developer who built and maintains all of it
+₹0   total infrastructure spend across all systems
+```
+
+One line below, in smaller muted type:
+
+"Dashboards built for these projects have been reviewed by a state project director."
+
+No exclamation. No emphasis. Just the fact.
+
+---
+
+### Section 08 — The AI Assistant
+
+Floating indicator in the bottom-right corner of every page. Pulsing teal dot. On click: spring animation expands to a 400×560px chat window on desktop, full-screen slide-up on mobile.
+
+**Before any messages — five starter prompts specific to Anvith:**
+
+```
+"Why were you promoted in two months?"
+"Tell me about a time something you built failed."  
+"What would you do in your first 30 days at a new company?"
+"What is DPMUMS actually doing right now?"
+"Why do you document before you build?"
+```
+
+These are not generic. They are the questions a recruiter or founder actually wants answered but might not think to ask directly.
+
+**The system prompt** is written entirely by Anvith — his words, his voice, his accurate description of every project including the honest parts. The build provides a detailed template with exact guidance on what to include. The template cannot be filled in by anyone else and still work.
+
+**Responses stream** in real time. They sound like Anvith — specific, direct, honest about limitations, genuinely proud of what works.
+
+**Rate limit:** Ten queries per session. On the eleventh: "You've asked more questions than most interviews contain. The next step is a real conversation." Email link follows.
+
+**Mobile:** Full-screen chat. Virtual keyboard handling correct — input and most recent message visible when keyboard is open.
+
+All questions asked are logged to Supabase (with consent notice). Anvith reviews them. They are user research on what the portfolio is failing to communicate clearly enough.
+
+---
+
+### Section 09 — Writing (If It Exists)
+
+If Anvith writes — anything — this section appears. If not, it is omitted entirely. An empty writing section is worse than no writing section.
+
+**Three post types with distinct visual treatments:**
+
+**Technical** — implementation decisions, architecture choices, why one approach over another. Shown in a card with the product it relates to visible as a small reference.
+
+**PM Thinking** — process observations, product decisions, what documentation discipline actually costs and saves.
+
+**Observations** — short, opinionated. Things noticed while building that are worth saying. Hot take styling: larger type, slight background variation.
+
+Masonry grid layout. Tag filtering is immediate, no reload. Live search with debounce.
+
+---
+
+### Section 10 — Testimonials (If They Exist)
+
+If real testimonials with verifiable LinkedIn sources exist, this section appears with editorial treatment: one large background quote in giant faint Clash Display italic at 0.025 opacity scrolling at 0.3x scroll speed, and foreground cards with full quotes, name, role, and LinkedIn verification link.
+
+If testimonials do not exist yet, this section is not shown. An empty testimonials section is worse than no testimonials section.
+
+---
+
+### Section 11 — Contact
+
+**Part 1 — Direct and Immediate:**
+
+Large type. Immediately readable without any interaction.
+
+```
+anvith@[email]  
+linkedin.com/in/[handle]  
+github.com/[handle]
+```
+
+Orange CTA: "Open to PM opportunities — reach out"
+
+**Part 2 — The Terminal (below the direct contact):**
+
+A working CLI. Command history, tab autocomplete, colorized output, correctly blinking cursor.
+
+```
+help          → lists all commands
+email         → copies email to clipboard
+linkedin      → opens LinkedIn profile
+github        → opens GitHub profile  
+resume        → downloads CV PDF
+hire          → opens structured contact form in terminal
+projects      → lists all 10 products with status
+clear         → clears terminal output
+
+--- reveals character ---
+whoami        → honest one paragraph: where Anvith is going and why
+promoted      → the real story of December 2024
+gap           → his philosophy on seeing and filling gaps
+tools         → his honest position on using AI to ship faster  
+1to10         → asks: what would you have done differently with more experience?
+```
+
+The personality commands are written by Anvith in his actual voice. They are why the terminal exists — not the email link, but the honest answers to the questions that matter.
+
+---
+
+### Section 12 — Footer
+
+Minimal. The dot grid continues.
+
+Left: name in small Clash Display. Center: navigation links in small mono. Right: social icons with magnetic hover.
+
+One line across the full width, centered, in very small muted mono:
+
+```
+Built alone · Documented before building · Running in production · India, 2025
+```
+
+Back-to-top button. Small confetti burst on click. Allowed to be delightful.
+
+---
+
+## Part 5: Individual Project Case Studies
+
+Accessed by clicking any product card — the card FLIP-expands to become the full case study page. The card becomes the page. The visitor zoomed in, not navigated away. On direct URL visit, a standard entrance animation.
+
+### Page Anatomy (All Projects)
+
+**Hero:**  
+Full viewport height. Real product screenshot as background with dark gradient overlay. Project name in Clash Display 700 at 72px. Status badge. One-line purpose. Three key metrics or numbers. Reading time. Links to live product and GitHub if available.
+
+A thin reading progress bar fixed at the very top of the viewport. Fills from 0% to 100% as the page is read. At 100%: a brief confetti acknowledgment. The visitor finished — that deserves a response.
+
+**The Problem:**  
+In large type. Honest and specific. The problem as it was actually experienced — not sanitized for an audience. A severity badge: Critical / High / Medium. A pull quote with orange left border — the single sharpest statement of the problem.
+
+**The Discovery:**  
+What was found. What was expected vs what actually came from the research or observation. For government projects: what the existing process looked like before intervention. For personal projects: the conversation or observation that started it.
+
+Research artifact images in cards that respond to cursor with three-dimensional tilt. Where real user feedback quotes exist: styled quote blocks with anonymous attribution.
+
+**The Solution:**  
+The approach taken. An interactive architecture diagram where every node is clickable for a detail panel — what that component does, what it replaced, why it was chosen. 
+
+A **"What I Considered But Rejected"** section — shown as a toggle. This is PM thinking made visible. Alternatives considered and the reasoning for not choosing them.
+
+A **Decision Log** — three key decisions, each shown as a structured card:
+- The question that required a decision
+- The options that existed
+- The choice made
+- The outcome so far
+
+**The Build:**  
+Real tech stack with one-line reasoning per technology choice. Key technical challenge and how it was resolved. Build timeline with real dates and milestones. Code snippets where they illuminate a decision — not to show code, but to show thinking. Syntax-highlighted, with copy buttons.
+
+**The Results:**  
+A before/after comparison slider for products where a visible state change exists. Draggable divider. Custom pointer events implementation.
+
+Metric cards that count up on scroll entry. User feedback quotes where they exist.
+
+**Learnings — The Honest Section:**  
+Three categories:
+- What worked (teal left border)
+- What failed (orange left border)  
+- What remains uncertain (violet left border)
+
+Each item is expandable. The failed items receive equal prominence to the worked items. A portfolio that hides failures is not credible. The PM judgment visible in honest post-mortems is worth more than a list of successes.
+
+**What's Next:**  
+For live/active products: a roadmap showing what is being built next.  
+For archived products: a post-mortem — why it was shut down and what carries into future work.
+
+**Related Products:**  
+Three products with genuine thematic or technical connections. The connections are labeled. On mobile: horizontal drag-scroll. Click → curtain page transition.
+
+---
+
+### Project-Specific Case Study Details
+
+**Annapurna Collections:** Lead with the personal element. His mother's jewelry business. The conversation that started it. Show both sides — the cinematic storefront and the CMS interface side by side. The Sanity GROQ queries. The idempotent Razorpay webhook. The luxury editorial visual direction was a product decision: heritage jewelry demands that aesthetic.
+
+**DOC AI:** Lead with the pipeline diagram — the five stages animated as a flow. Show the 14 templates and 6 style presets as a matrix visualization. Show a Mermaid.js diagram rendered inside the product output. The QA test suite is the key insight: he wrote tests to validate his own AI output because he treats AI as a component that needs validation, not a magic box.
+
+**DPMUMS:** Lead with the numbers — 152 employees, two states, built alone. Make the geofencing logic tangible: show the 100m radius circle on a map with an employee position inside and outside it. Show the 4-slot attendance system as a timeline. The interactive hierarchy demo — visitor clicks any role (Head Office → Zone → District → Staff) and sees exactly what that role's dashboard shows. Role-based filtering demonstrated live.
+
+**GlobusIT ERP:** Lead with the product thinking. The "Task Intent" model is not a technical feature — it is a PM observation about how people actually think about tasks versus how software usually represents them. The org chart visualization powered by the hierarchical department relationships.
+
+**Vantage OS:** Lead with the three-context switching. Show all three contexts — office, personal, debt — and the PIN-based switching. The automatic Udhaar (debt) record generation from bill splitting is elegant business logic. Note the v2 rewrite in progress.
+
+**Field Reporter:** Lead with the state machine. Draw it — all six states, all transitions, the conditions for each. Show the role-specific path divergence: GP Tech vs Field Engineer vs Zonal Patroller see different activity types and attributes. The sequential data validation was a product decision about field reliability.
+
+**Reports Automation:** Lead with the hierarchy. Show the org structure — Head Office → Zone Manager → District Lead → Field Employee — and trace one report from raw data to each person's customized view. The HTML email dashboard is the highlight: recipients get a complete dashboard in their inbox without logging into anything.
+
+**Span Finder Pro:** Lead with the technical elegance. Explain tile-based spatial indexing with a visual — the 0.005° tiles, why they were chosen, what performance problem they solved. The three-tier caching architecture for a Google Apps Script app is sophisticated.
+
+**BSEC Employee Recruitment:** Lead with what it represents — the period when Apps Script was the primary tool, and what it shows about how far the technical capability has evolved since. Honest about the constraints of the tab-as-table relational model.
+
+**Apps Script Utility Collection:** Presented as a reference archive. The scripts that built the foundation. The form creators, inventory tools, and automation utilities that preceded everything else. Provenance, not current work.
+
+---
+
+## Part 6: Special Pages
+
+### /deep — The Technical Archive
+
+All ten products with deeper technical documentation than the homepage shows. Schema diagrams. API endpoint maps. Architecture diagrams expanded to full detail. For the visitor who wants to understand the complete technical depth.
+
+Discovered via: terminal command `deep` or Ctrl+K search.
+
+### /documents — The PM Artifact Gallery
+
+Real BRDs, ERDs, and user flow documents with sensitive details redacted and annotated. Each annotation explains the reasoning behind structural choices — why this section exists, why these fields were included, what happens to the product when this document is incomplete.
+
+The intro line: "I document before I build. Here is what that looks like."
+
+Discovered via: terminal command `docs` or Ctrl+K search.
+
+### /now — Current State
+
+What Anvith is working on right now. Current project status. What he is thinking about. What launches are coming. Updated from a config JSON whenever it changes. In the footer navigation.
+
+### /secret — The Real Opinion
+
+Not linked anywhere. Found by typing `opinion` in the terminal, or by reading a specific source code comment that hints at its existence.
+
+One honest opinion that Anvith holds about PM work, AI tools, building software in India, or the future of technology. Something specific enough to be disagreed with. Something he would say to a smart colleague but might not post publicly.
+
+This page is for the right person. The visitor who finds it and agrees with it is exactly who Anvith wants to work with.
+
+### /not-found — The 404 Page
+
+A Span Finder Pro reference. The page shows: "No infrastructure found at this coordinate." A small map with a pulsing orange marker at a location with no matching OLT or ONT nearby. The humor is internal — the visitor who knows what Span Finder Pro does will recognize it immediately. But the page is well-designed and on-brand regardless.
+
+A "return to base" link back home.
+
+### /analytics — The Product Dashboard
+
+Password-protected. Shows: section engagement, product click-through rates, case study completion rates, AI chat query volume, most common AI questions, contact form submissions, return visitor counts.
+
+The AI questions are the most valuable data in this dashboard. They surface what the portfolio is failing to communicate clearly enough. Anvith reads them. He updates the system prompt and the case studies accordingly. This is product management applied to a product about a product manager.
+
+---
+
+## Part 7: Features That Surprise
+
+### Scroll Velocity Awareness
+
+The site measures scroll speed in real time. Fast scrollers see high-level summaries — large typography, single metric, strong visual. Visitors who slow down or pause trigger additional depth — expanded tooltips, richer context, more information appearing.
+
+This is a product decision about user intent. A recruiter doing a first pass gets what they need. A founder doing deep diligence automatically gets more. Nobody has to choose a mode. The site adapts.
+
+No portfolio does this. Most portfolios dump everything on everyone.
+
+### The Session Reflection
+
+Throughout the session, cursor position and time spent are tracked client-side. No external transmission. No persistence.
+
+At the contact section, a brief visualization appears: "You spent 4 minutes on the AI projects. 2 minutes on the automation section. You haven't read the government scale section yet." Not surveillance — reflection. It makes the visitor feel noticed, which is what Anvith does with user data professionally.
+
+### The Real Timeline Strip
+
+A visible element at the bottom of the products section: a horizontal timeline showing when each product was started and its current status. The entire timeline is five months. Ten products. One developer.
+
+Presented without comment. The timeline is the comment.
+
+### The Interactive Hierarchy Demo
+
+In the DPMUMS deep dive and the Reports Automation section: a live org chart. Click any role and the screen shows exactly what that person's report or dashboard contains. The role-based filtering is not described. It is demonstrated.
+
+### Recruiter Mode
+
+A toggle in the navigation. When enabled: the most impressive products by impact metric sort to the top, a persistent banner shows availability and one-click resume download, the hero subtitle shifts to direct availability language.
+
+Switching modes is animated — the layout physically reorganizes. Not a flash. A transition.
+
+### Live Visitor Presence
+
+Anonymous colored dots in the bottom corner when multiple visitors are on the site simultaneously. The sections they are in. How many are here. Built on Supabase Realtime. Entirely anonymous. Creates a moment: other people find this worth their time.
+
+### Voice Navigation
+
+Activates via keyboard shortcut or nav icon. Browser-native speech recognition. Commands: "show projects," "about," "contact," "open [product name]," "resume," "terminal." Not shown on browsers where the API is unavailable.
+
+### Command Palette
+
+Ctrl+K opens a product-quality search interface. Searches across all pages, products, blog posts, terminal commands. Keyboard-navigable. Immediate.
+
+---
+
+## Part 8: Easter Eggs
+
+Each easter egg is designed with the same care as the main features. They reward curiosity. Their audience is exactly who Anvith wants to work with.
+
+**The Konami Code** activates a complete aesthetic shift. A different visual identity inside the main one — the dot grid becomes denser, the fonts shift, chiptune audio plays from Web Audio API oscillators, scanlines appear. Someone who discovers this should immediately show someone else.
+
+**Typing "hire"** anywhere outside an input field triggers a confetti burst and a specific, memorable response.
+
+**The browser console** contains something that makes a developer who opens it want to close the console and open their email. Specific to Anvith — not a generic "we're hiring."
+
+**The 90-second idle state** activates a screensaver. Product screenshots float as bubbles across the viewport. Any interaction restores the page.
+
+**The tenth visit** — detected via localStorage — triggers a small acknowledgment that the visitor keeps coming back.
+
+**Terminal easter egg commands** — responses to impossible inputs written in Anvith's voice:
+- `rm -rf /` → "Permission denied. And you know exactly why that would be a bad idea."
+- `sudo make me coffee` → a rendered ASCII coffee cup with animated steam
+- `git log` → a humorous fake commit history with real-feeling messages
+
+---
+
+## Part 9: Animation and Motion Vision
+
+### What Every Animation Communicates
+
+The entry clip-path wipe communicates: this person is precise. Nothing fades. It reveals.
+
+The product card FLIP communicates: you zoomed in, not navigated. The work is continuous.
+
+The neural web electrical impulses communicate: skills connect and reinforce each other. They are not isolated line items.
+
+The flow diagram pulses communicate: this is a live system. Data is moving right now.
+
+The scroll velocity response communicates: this site knows why you are here and serves you accordingly.
+
+If an animation does not answer "what does this communicate?" — it should not exist.
+
+### The Quality Bar
+
+The reference is not other developer portfolios. The reference is the best interactive work being produced — not "impressive for a PM's portfolio" but genuinely impressive, full stop.
+
+Every animated element would be comfortable appearing on an Awwwards daily pickup. If it would not, rebuild it.
+
+### Motion Principles
+
+Things that appear arrive purposefully. Things that disappear leave decisively. Nothing lingers. Nothing is decorative movement.
+
+Entrances: quick-out-slow-in. The object arrives with intention and settles.  
+Exits: slow-in-quick-out. The object leaves cleanly.  
+Interactive physics: spring. Objects feel like they have mass.  
+Scroll-driven: linear scrub with GSAP. The visitor's scroll speed controls the animation speed directly.
+
+All animations respect `prefers-reduced-motion`. Visitors who set this preference receive an excellent experience with no animation — instant state changes, full information. Not a degraded experience. A different, complete one.
+
+### What Runs on Every Device
+
+Clip-path reveals, counter animations, section heading reveals, dot grid, card hover state changes, terminal cursor blink, parallax at low intensity — all devices.
+
+Three-dimensional card tilt, custom cursor, magnetic button pull, heavy WebGL, complex canvas animations — desktop with precision cursor only.
+
+All mobile-specific implementations are designed as complete, excellent experiences in their own right — not as fallbacks that apologize for what is missing.
+
+---
+
+## Part 10: Responsive Philosophy
+
+The portfolio is rethought per device context, not resized. The question for every section is: what is the best experience for a person using this specific device in this specific context?
+
+### Complete Redesigns Per Device
+
+**Neural web → grouped tag cloud on small phones.** The force graph needs space. The tag cloud communicates the same information — categories, proficiency by size, color-coded domains — in a format appropriate for a 375px screen.
+
+**Constellation / product grid → single-column full-width cards on mobile.** All information visible without hovering. Nothing hidden behind an interaction that touch devices cannot perform.
+
+**The three-column product grid → two columns on tablet, one column on mobile.**
+
+**AI chat 400×560px drawer → full-screen slide-up on mobile.** A small fixed drawer on a phone screen is not usable.
+
+**The complex flow diagrams → vertically stacked node-and-connector lists on mobile.** Same information, different format.
+
+**Custom cursor → absent on touch devices.** Not hidden. Genuinely not there.
+
+**Three-dimensional tilt effects → absent on touch devices.** Touch cannot provide the cursor position data these require.
+
+### Universal Requirements
+
+Touch targets: 44px minimum height and width on every interactive element on touch devices.  
+Full-height elements: `100dvh` — never `100vh`. Mobile browsers change visible height when toolbars show and hide.  
+Fixed elements: safe area insets on all. Notch, Dynamic Island, Android navigation bars — respected on every fixed-position element.  
+Virtual keyboard: chat and terminal input remain visible when keyboard is open.  
+Hover information: every piece of information available on hover is also accessible via tap.
+
+---
+
+## Part 11: Technical Architecture
+
+### Philosophy
+
+Next.js 14, App Router, TypeScript strict mode throughout. Production code quality — because this portfolio is itself evidence of Anvith's technical judgment, and that judgment is visible in how the code is organized.
+
+### Content System
+
+**Products:** One MDX file per product. Frontmatter contains structured data. MDX body contains case study narrative. Adding a product is one file.
+
+**Config JSON files:** `status.json` (building/reading/available), `metrics.json` (impact numbers), `timeline.json` (career events). Updated by editing one file, no framework required.
+
+No CMS. Anvith is comfortable with code editors. A CMS adds maintenance overhead without adding capability for a solo developer managing their own portfolio.
+
+### API Integrations
+
+**Anthropic Claude API (claude-sonnet-4-6)** — the chat assistant. Streaming via SSE. Ten queries per session, rate-limited in Supabase.
+
+**Supabase** — contact form submissions, chat rate limiting, session analytics, visitor presence.
+
+**GitHub API** — last deployment timestamp, contribution heatmap.
+
+**Resend** — contact form email notifications.
+
+Every integration has a documented graceful fallback. If any service is unavailable, the portfolio looks and functions correctly.
+
+### Performance
+
+Every page feels instant on a standard Indian mobile connection. Lighthouse Performance above 90 on every core route.
+
+The dot grid is pure CSS — zero JavaScript cost.  
+Heavy visualizations load lazily, never blocking first render.  
+AI chat is loaded dynamically with `ssr: false`.  
+All images served at the appropriate size for the device via proper `sizes` prop.  
+No images without explicit dimensions (eliminates layout shift).  
+No font loading layout shift (next/font with display:swap, preloaded weights only).
+
+---
+
+## Part 12: SEO
+
+The portfolio ranks for "Anvith Reddy Rondla" on page one.
+
+Every page has a unique title, description, and OG image. Product page OG images show the product name, the "Solo" indicator where applicable, and the key number.
+
+Case study pages use Article schema markup. Heading hierarchy is semantic. The sitemap is auto-generated from all public routes. robots.txt is correctly configured.
+
+---
+
+## Part 13: Copy Standards
+
+### The Rules
+
+**Specific.** Real product names, real numbers, real constraints, real outcomes. If a sentence could describe any developer, rewrite it.
+
+**Honest.** What went wrong. What was learned. What he would do differently. Portfolios that hide failures are not credible.
+
+**His voice.** Not polished for LinkedIn. Not corporate. The way he explains things to a smart person who is genuinely curious.
+
+### Never
+
+"Passionate about" — never.  
+"Results-driven" — never.  
+"Team player" — never.  
+"Eager to learn" — never, even though it is true.  
+Skills as a standalone noun list — never. Only as context for a specific product.  
+Any sentence that could belong to anyone — never.
+
+### The Portfolio's Argument in One Sentence
+
+"Promoted to Junior PM in two months. For building ten products nobody asked for."
+
+Everything in this portfolio — every product, every document, every terminal command response, every AI assistant answer — is the evidence for that sentence.
+
+---
+
+## Part 14: What Anvith Must Provide
+
+None of these can be built or invented. Every item is marked clearly in the content files.
+
+**The AI system prompt** — written entirely by Anvith, in his words. Complete information about every project. His actual working style. His honest limitations. Example questions and ideal responses. The chat only works as a recruiting asset if this is authentic and specific.
+
+**The bio paragraph** — one paragraph, his voice. The Field Reporter story. The gap he saw. What he built. Sound like a person, not a professional.
+
+**Case study narratives** — two to four paragraphs per product. The problem as he experienced it. What he built and why. What happened. What he would do differently. These are the most credible content in the portfolio.
+
+**The personality terminal commands** — responses to whoami, promoted, gap, tools, 1to10. Written in his voice. These are read by the people most seriously considering hiring him.
+
+**The secret page opinion** — one honest opinion. Something specific enough to be disagreed with.
+
+**Real product screenshots** — actual UIs from every product. Not mockups. The real software. For archived or development-stage products, the most current available.
+
+**Real metrics** — the actual employee count (152), district count (8 in Telangana, 64 positions in Bihar), the ₹0 infrastructure cost and its commercial equivalent, automation hours saved per month. Real numbers only.
+
+**Current status JSON** — updated whenever building, reading, or availability changes.
+
+**The resume PDF** — current, accurate, ready to download.
+
+The portfolio is not live until every item on this list is real and complete. A portfolio with placeholder content is a draft, not a product.
+
+---
+
+## Part 15: Definition of Done
+
+### A Feature is Done When
+
+It works correctly on every screen in the test matrix (iPhone SE 375px, iPhone 15 390px, iPad Air 820px, MacBook 1280px, Desktop 1440px). It looks identical on a real device as in browser DevTools. It performs at Lighthouse 90+ without exception. It would not need to be hidden or explained if the most technically rigorous person Anvith knows saw it right now.
+
+### The Portfolio is Done When
+
+Every item in Part 14 is real and complete. Lighthouse Performance exceeds 90 on every core route. Anvith has read through the entire portfolio as a stranger and genuinely wanted to send himself an email. Three people who know nothing about him have reviewed it and asked unprompted: "Can I share this with someone?"
+
+### Then
+
+Keep building it. Every time a product ships, add it. Every time something changes, update it. Every time the AI assistant gets a new question that reveals a gap, improve the system prompt and the case study. The portfolio is a product. It is never finished — only continuously better.
+
+---
+
+## Appendix: The Build Order
+
+Build in this sequence. Each phase must pass its quality bar before the next begins.
+
+**Phase 1 — Foundation:** Next.js setup, TypeScript configuration, all design tokens (colors, typography, spacing, the dot grid CSS background), font loading, global styles, container system, navigation shell.
+
+**Phase 2 — Content Architecture:** MDX configuration, all content schemas, all config JSON files, data utilities. The content system must work before any section is built.
+
+**Phase 3 — Entry and Hero:** The blurred product fragment background, the clip-path name reveal, the three taglines, the status strip, the orange summary line.
+
+**Phase 4 — About:** Photo card with tilt, the currently block, the bio placeholder, the neural web visualization, the four-fact block.
+
+**Phase 5 — Products Grid:** All ten product cards with real data, the tier grouping, the Solo and "Nobody asked me" indicators, the DPMUMS cost callout, the progression lines, hover states, the FLIP navigation.
+
+**Phase 6 — Case Study Pages:** Full page anatomy for all ten products. The architecture diagrams. The decision logs. The before/after sliders. The honest learnings sections.
+
+**Phase 7 — The PM Layer:** BRD/ERD/user flow document previews, the section copy.
+
+**Phase 8 — Systems/Automations:** The three animated flow diagrams, the before/after automation reveal, the impact counter, the migration timeline section.
+
+**Phase 9 — Government Scale:** The India map, the numbers, the single sentence about the state project director.
+
+**Phase 10 — Contact:** Direct contact block, the working terminal with all commands.
+
+**Phase 11 — AI Assistant:** Claude API integration, rate limiting, streaming display, starter prompts, mobile full-screen implementation.
+
+**Phase 12 — Wild Features:** Scroll velocity awareness, recruiter mode, live presence, session reflection widget.
+
+**Phase 13 — Special Pages:** /deep, /documents, /now, /secret, /not-found, /analytics.
+
+**Phase 14 — Easter Eggs:** Konami code, console message, idle screensaver, tenth visit, terminal commands.
+
+**Phase 15 — Performance Pass:** Lighthouse audit on every route, bundle analysis, image optimization, lazy loading verification.
+
+**Phase 16 — SEO and Meta:** All route metadata, dynamic OG images, sitemap, schema markup.
+
+**Phase 17 — Content Completion (Anvith):** Every item in Part 14 filled in with real content.
+
+The portfolio goes live after Phase 17. Not before.
