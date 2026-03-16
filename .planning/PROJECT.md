@@ -19,12 +19,13 @@ Prove "Promoted to Junior PM in two months for building 10 products nobody asked
 
 ### Active
 
-- [ ] Transition design system from "Axiom" to "Anvith Portfolio" (Identity Shift)
-- [ ] Implement Spatial 3D Grid Backdrop (Three.js or optimized CSS/Canvas)
-- [ ] Build "Blueprint Reveal" scroll animations for core product sections
-- [ ] Develop interactive BRD/ERD artifact overlays
-- [ ] Create 3D Tilt Case Study UI
-- [ ] Fix TypeScript build errors in missing/orphaned components
+- [ ] VIS: Implement 3D Spatial Grid Backdrop (R3F) <!-- id: VIS-01 -->
+- [ ] VIS: Identity transition (Axiom -> Anvith) <!-- id: VIS-02 -->
+- [ ] INT: "Blueprint Reveal" signature interaction <!-- id: INT-01 -->
+- [ ] INT: FLIP-based card/case study transitions <!-- id: INT-03 -->
+- [ ] PROD: 10-product tiered grid with 3D elements <!-- id: PROD-01 -->
+- [ ] DIR: Functional Terminal and hybrid Nav <!-- id: DIR-01 -->
+- [ ] OPT: A11y mirroring and ₹0 infra optimization <!-- id: OPT-01 -->
 
 ### Out of Scope
 
