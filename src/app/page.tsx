@@ -1,32 +1,21 @@
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import ProjectsSection from '@/components/ProjectsSection';
-import MigrationStory from '@/components/MigrationStory';
-import PMLayer from '@/components/PMLayer';
-import AutomationsSection from '@/components/AutomationsSection';
-import SystemsAtScale from '@/components/SystemsAtScale';
-import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
-import AIAssistant from '@/components/AIAssistant';
-import { getGlobalData, getProjects } from '@/lib/content';
+import Navigation from "@/components/Navigation";
+import Hero from "@/components/Hero";
+import EvidenceBoard from "@/components/EvidenceBoard";
+import Thinking from "@/components/Thinking";
+import Systems from "@/components/Systems";
+import About from "@/components/About";
+import Footer from "@/components/Footer";
 
-export default async function Home() {
-    const status = getGlobalData('status') || { status: "System Active", available: true, lastUpdated: "Live" };
-    const metrics = getGlobalData('metrics') || { employeesSaved: 152, automationHoursMonth: 450, infrastructureCost: 0 };
-    const projects = await getProjects();
-
-    return (
-        <main className="relative">
-            <HeroSection status={status} />
-            <AboutSection status={status} metrics={metrics} />
-            <ProjectsSection projects={projects} />
-            <MigrationStory />
-            <PMLayer />
-            <AutomationsSection />
-            <SystemsAtScale />
-            <ContactSection />
-            <Footer />
-            <AIAssistant />
-        </main>
-    );
+export default function Home() {
+  return (
+    <main className="bg-[var(--color-bg)] min-h-screen transition-colors duration-300">
+      <Navigation />
+      <Hero />
+      <EvidenceBoard />
+      <Thinking />
+      <Systems />
+      <About />
+      <Footer />
+    </main>
+  );
 }

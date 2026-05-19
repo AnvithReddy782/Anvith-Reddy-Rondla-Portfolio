@@ -1,78 +1,120 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { personalInfo } from "@/lib/data";
+import { springSoft } from "@/lib/animations";
 
 export default function Footer() {
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+  const [showTop, setShowTop] = useState(false);
 
-    return (
-        <footer className="py-16 md:py-24 border-t border-border-1 bg-bg-0 relative overflow-hidden">
-            {/* Background Blueprint/Dot Blend */}
-            <div className="absolute inset-0 blueprint-overlay pointer-events-none opacity-[0.2]" />
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
-                style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+  useEffect(() => {
+    const handleScroll = () => setShowTop(window.scrollY > 600);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-            <div className="container-axiom relative z-10">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-                    {/* Left: Name & Version */}
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-4">
-                            <span className="text-base font-bold tracking-tighter uppercase text-text-0">Anvith Reddy Rondla</span>
-                            <span className="w-1.5 h-1.5 rounded-full bg-teal shadow-[0_0_8px_rgba(0,180,166,0.5)]" />
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <span className="type-mono-label text-[9px] text-text-2 uppercase tracking-[0.2em] font-medium">Portfolio // v1.2</span>
-                            <span className="technical-tag !static border-teal/20 text-teal/80">ONLINE</span>
-                        </div>
-                    </div>
+  return (
+    <footer className="py-14 md:py-20 border-t border-[var(--color-border)] relative">
+      <div className="container-main">
+        {/* CTA */}
+        <motion.div
+          className="text-center mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0, transition: springSoft },
+          }}
+        >
+          <h2 className="mb-3">Let us build something that matters</h2>
+          <p className="text-[var(--color-text-secondary)] max-w-lg mx-auto mb-6">
+            I am looking for product management roles where shipping speed is a core value. If that is you, let us talk.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <motion.a
+              href={`mailto:${personalInfo.email}`}
+              className="btn-primary relative overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className="relative z-10">{personalInfo.email}</span>
+              <motion.span
+                className="absolute inset-0 bg-white/10"
+                initial={{ x: "-100%" }}
+                whileHover={{ x: "100%" }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+              />
+            </motion.a>
+            <motion.a
+              href="/resume.pdf"
+              className="btn-secondary"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              download
+            >
+              Download resume
+            </motion.a>
+          </div>
+        </motion.div>
 
-                    {/* Center: Socials with technical wrap */}
-                    <div className="flex items-center gap-10">
-                        <a href="https://github.com/anvithreddy" target="_blank" className="text-text-2 hover:text-text-0 transition-all hover:-translate-y-1 duration-300">
-                            <Github size={20} />
-                        </a>
-                        <a href="https://linkedin.com/in/anvithreddy" target="_blank" className="text-text-2 hover:text-text-0 transition-all hover:-translate-y-1 duration-300">
-                            <Linkedin size={20} />
-                        </a>
-                        <a href="mailto:anvithreddy.r@gmail.com" className="text-text-2 hover:text-text-0 transition-all hover:-translate-y-1 duration-300">
-                            <Mail size={20} />
-                        </a>
-                    </div>
+        {/* Bottom bar */}
+        <motion.div
+          className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-[var(--color-border)]"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          <div className="flex items-center gap-5">
+            <span className="label text-[var(--color-text-faint)]">{personalInfo.location}</span>
+            <span className="label text-[var(--color-text-faint)]">V3.0 — 2026</span>
+          </div>
 
-                    {/* Right: Back to Top */}
-                    <motion.button
-                        onClick={scrollToTop}
-                        whileHover={{ x: 5 }}
-                        className="flex items-center gap-4 group"
-                    >
-                        <span className="type-mono-label text-[10px] text-text-2 uppercase tracking-[0.3em] group-hover:text-text-0 transition-colors">Back to Top</span>
-                        <div className="w-10 h-10 border border-border-1 flex items-center justify-center group-hover:border-teal transition-all group-hover:shadow-[0_0_15px_rgba(0,180,166,0.1)]">
-                            <ArrowUp size={16} className="text-text-2 group-hover:text-teal group-hover:scale-110 transition-all" />
-                        </div>
-                    </motion.button>
+          <div className="flex items-center gap-5">
+            {[
+              { label: "LinkedIn", href: personalInfo.linkedin },
+              { label: "GitHub", href: personalInfo.github },
+              { label: "X", href: personalInfo.twitter },
+            ].map((link, i) => (
+              <motion.a
+                key={i}
+                href={link.href}
+                className="label text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
+                whileHover={{ y: -1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
+              >
+                {link.label}
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
+      </div>
 
-                </div>
-
-                {/* Final Decal Strip */}
-                <div className="mt-16 md:mt-24 pt-10 border-t border-border-1/40 flex flex-col md:flex-row justify-between items-center gap-8 text-[8px] type-mono-label text-text-2 uppercase tracking-[0.4em] opacity-60">
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-                        <span className="hover:text-teal transition-colors">Built Solo</span>
-                        <span className="opacity-20 hidden md:block">|</span>
-                        <span className="hover:text-teal transition-colors">Docs First</span>
-                        <span className="opacity-20 hidden md:block">|</span>
-                        <span className="hover:text-teal transition-colors">Always Shipping</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <span className="w-1 h-1 bg-orange rounded-full animate-pulse" />
-                        © 2025 Anvith Reddy Rondla. All rights reserved.
-                    </div>
-                </div>
-            </div>
-        </footer>
-    );
+      {/* Scroll to top */}
+      <AnimatePresence>
+        {showTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.8 }}
+            transition={springSoft}
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border-hover)] shadow-lg z-50"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M8 13V3M4 7l4-4 4 4" />
+            </svg>
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </footer>
+  );
 }
