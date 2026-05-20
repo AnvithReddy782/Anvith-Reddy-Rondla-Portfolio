@@ -97,7 +97,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.4 }}
         >
-          {personalInfo.title} Fast-tracked to Product Management through the proactive delivery of ten production-grade applications.
+          {personalInfo.title} Promoted to Product Management through the proactive delivery of ten production grade applications.
         </motion.p>
 
         <motion.div

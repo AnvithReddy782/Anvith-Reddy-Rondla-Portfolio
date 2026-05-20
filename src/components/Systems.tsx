@@ -12,9 +12,9 @@ const flowSteps = [
 ];
 
 const capabilities = [
-  { title: "Edge deployment", description: "Local-first data persistence with cloud sync. Built for the worst connectivity, not the best.", color: "accent" },
+  { title: "Edge deployment", description: "Local first data persistence with cloud sync. Built for the worst connectivity, not the best.", color: "accent" },
   { title: "Logic engines", description: "Deterministic state machines for field workers. No ambiguity. No edge cases left unhandled.", color: "signal" },
-  { title: "Zero fail state", description: "Automated retry logic for low-connectivity zones. The system does not break when the network does.", color: "muted" },
+  { title: "Zero fail state", description: "Automated retry logic for low connectivity zones. The system does not break when the network does.", color: "muted" },
 ];
 
 const liveSystems = [
@@ -52,7 +52,7 @@ export default function Systems() {
           <span className="section-label">03 / The Architecture</span>
           <h2 className="section-heading">Built for the worst conditions.</h2>
           <p className="section-desc">
-            Every system here runs in places with bad internet, confused users, and zero maintenance budget. They do not just work — they survive.
+            Every system here runs in places with bad internet, confused users, and zero maintenance budget. They do not just work. They survive.
           </p>
         </motion.div>
 
