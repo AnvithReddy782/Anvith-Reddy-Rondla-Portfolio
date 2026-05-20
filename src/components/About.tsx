@@ -35,7 +35,7 @@ export default function About() {
           viewport={{ once: true, margin: "-50px" }}
           variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}
         >
-          <span className="section-label">04 — The Person</span>
+          <span className="section-label">04 / The Person</span>
           <h2 className="section-heading">The short version.</h2>
         </motion.div>
 

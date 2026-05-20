@@ -8,11 +8,11 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-heading", display:
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Anvith Reddy Rondla — Product Manager and Systems Builder",
+  title: "Anvith Reddy Rondla | Product Manager and Systems Builder",
   description: "Promoted to Junior PM in two months. Built 10 products at zero infrastructure cost. Every system still runs in production.",
   authors: [{ name: "Anvith Reddy Rondla" }],
   openGraph: {
-    title: "Anvith Reddy Rondla — Product Manager and Systems Builder",
+    title: "Anvith Reddy Rondla | Product Manager and Systems Builder",
     description: "10 products. 2 states. Zero infra. All shipping.",
     type: "website",
   },

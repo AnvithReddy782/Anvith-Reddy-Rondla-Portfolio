@@ -53,7 +53,7 @@ export default function EvidenceBoard() {
           viewport={{ once: true, margin: "-50px" }}
           variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}
         >
-          <span className="section-label">01 — The Work</span>
+          <span className="section-label">01 / The Work</span>
           <h2 className="section-heading">Ten products. Zero permission.</h2>
           <p className="section-desc">
             Every product here started as a problem I noticed and nobody else was solving. I did not wait for a ticket. I did not ask for a budget. I built the thing and let the results speak.

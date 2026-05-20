@@ -44,7 +44,7 @@ export default function Thinking() {
           viewport={{ once: true, margin: "-50px" }}
           variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}
         >
-          <span className="section-label">02 — The Process</span>
+          <span className="section-label">02 / The Process</span>
           <h2 className="section-heading">I write before I build.</h2>
           <p className="section-desc">
             Most portfolios show the code. This section shows the thinking behind it. Every product started with a document, a diagram, and a decision about what not to build.

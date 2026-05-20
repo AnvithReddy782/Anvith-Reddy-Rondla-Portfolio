@@ -49,7 +49,7 @@ export default function Systems() {
           viewport={{ once: true, margin: "-50px" }}
           variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}
         >
-          <span className="section-label">03 — The Architecture</span>
+          <span className="section-label">03 / The Architecture</span>
           <h2 className="section-heading">Built for the worst conditions.</h2>
           <p className="section-desc">
             Every system here runs in places with bad internet, confused users, and zero maintenance budget. They do not just work — they survive.
