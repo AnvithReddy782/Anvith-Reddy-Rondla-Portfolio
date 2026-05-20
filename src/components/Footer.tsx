@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { personalInfo } from "@/lib/data";
-import { springSoft } from "@/lib/animations";
+import { useStore } from "@/lib/store";
+import Terminal from "./Terminal";
 
 export default function Footer() {
   const [showTop, setShowTop] = useState(false);
+  const { auditMode, toggleAuditMode } = useStore();
 
   useEffect(() => {
     const handleScroll = () => setShowTop(window.scrollY > 600);
@@ -19,31 +21,31 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-14 md:py-20 border-t border-[var(--color-border)] relative">
+    <footer className="py-14 border-t border-[var(--color-border)] relative">
       <div className="container-main">
         {/* CTA */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={{
             hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: springSoft },
+            visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } },
           }}
         >
-          <h2 className="mb-3">Let us build something that matters</h2>
+          <h2 className="mb-3">I solve problems you have not noticed yet.</h2>
           <p className="text-[var(--color-text-secondary)] max-w-lg mx-auto mb-6">
-            I am looking for product management roles where shipping speed is a core value. If that is you, let us talk.
+            I am looking for a team that values shipping speed as much as I do. If that is your team, I would love to talk.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <motion.a
               href={`mailto:${personalInfo.email}`}
-              className="btn-primary relative overflow-hidden"
+              className="btn-primary w-full sm:w-auto text-center"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="relative z-10">{personalInfo.email}</span>
+              <span className="relative z-10">Send me an email</span>
               <motion.span
                 className="absolute inset-0 bg-white/10"
                 initial={{ x: "-100%" }}
@@ -53,19 +55,42 @@ export default function Footer() {
             </motion.a>
             <motion.a
               href="/resume.pdf"
-              className="btn-secondary"
+              className="btn-secondary w-full sm:w-auto text-center"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               download
             >
-              Download resume
+              Download my resume
             </motion.a>
+            <motion.button
+              onClick={toggleAuditMode}
+              className={`w-full sm:w-auto px-5 py-2.5 rounded-md border flex items-center justify-center gap-2 transition-all duration-300 font-mono text-[11px] ${
+                auditMode
+                  ? "bg-[#00B4A6]/10 border-[#00B4A6] text-[#00B4A6] shadow-[0_0_12px_rgba(0,180,166,0.3)] font-bold"
+                  : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-secondary)] hover:border-[var(--color-border-hover)]"
+              }`}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className={`w-2 h-2 rounded-full ${auditMode ? "bg-[#00B4A6] animate-pulse" : "bg-neutral-500"}`} />
+              <span>SYSTEM_AUDIT: {auditMode ? "ACTIVE" : "STANDBY"}</span>
+            </motion.button>
           </div>
+
+          {/* Tactical Command CLI Terminal */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <Terminal />
+          </motion.div>
         </motion.div>
 
         {/* Bottom bar */}
         <motion.div
-          className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-[var(--color-border)]"
+          className="flex flex-col md:flex-row items-center justify-center gap-4 pt-6 border-t border-[var(--color-border)]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -73,7 +98,7 @@ export default function Footer() {
         >
           <div className="flex items-center gap-5">
             <span className="label text-[var(--color-text-faint)]">{personalInfo.location}</span>
-            <span className="label text-[var(--color-text-faint)]">V3.0 — 2026</span>
+            <span className="label text-[var(--color-text-faint)]">Built with intention. 2026.</span>
           </div>
 
           <div className="flex items-center gap-5">
@@ -103,7 +128,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.8 }}
-            transition={springSoft}
+            transition={{ type: "spring", stiffness: 200, damping: 25 }}
             onClick={scrollToTop}
             className="fixed bottom-6 right-6 w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border-hover)] shadow-lg z-50"
             whileHover={{ scale: 1.05 }}

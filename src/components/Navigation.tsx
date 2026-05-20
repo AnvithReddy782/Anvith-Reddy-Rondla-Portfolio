@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 import { personalInfo } from "@/lib/data";
+import { useStore } from "@/lib/store";
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { auditMode, toggleAuditMode } = useStore();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -69,6 +71,21 @@ export default function Navigation() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={toggleAuditMode}
+              className={`h-8 px-3 mr-1 rounded-md border text-[10px] font-mono flex items-center gap-1.5 transition-all duration-300 ${
+                auditMode
+                  ? "bg-[#00B4A6]/10 border-[#00B4A6] text-[#00B4A6] shadow-[0_0_10px_rgba(0,180,166,0.2)] font-bold"
+                  : "border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border-hover)]"
+              }`}
+              aria-label="Toggle system audit mode"
+            >
+              <span className={`w-1.5 h-1.5 rounded-full ${auditMode ? "bg-[#00B4A6] animate-pulse" : "bg-neutral-500"}`} />
+              <span>AUDIT</span>
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="w-8 h-8 rounded-md border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border-hover)] transition-colors"
               aria-label="Toggle theme"
@@ -97,11 +114,25 @@ export default function Navigation() {
               whileTap={{ scale: 0.98 }}
               className="btn-primary"
             >
-              Get in Touch
+              Send me an email
             </motion.a>
           </div>
 
           <div className="flex md:hidden items-center gap-3">
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={toggleAuditMode}
+              className={`h-8 px-2.5 rounded-md border text-[10px] font-mono flex items-center gap-1 transition-all duration-300 ${
+                auditMode
+                  ? "bg-[#00B4A6]/10 border-[#00B4A6] text-[#00B4A6] shadow-[0_0_8px_rgba(0,180,166,0.2)]"
+                  : "border-[var(--color-border)] text-[var(--color-text-muted)]"
+              }`}
+              aria-label="Toggle system audit mode"
+            >
+              <span className={`w-1.5 h-1.5 rounded-full ${auditMode ? "bg-[#00B4A6] animate-pulse" : "bg-neutral-500"}`} />
+              <span>AUDIT</span>
+            </motion.button>
+
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -162,7 +193,7 @@ export default function Navigation() {
                   className="btn-primary text-center mt-2"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Get in Touch
+                  Send me an email
                 </motion.a>
               </div>
             </motion.div>

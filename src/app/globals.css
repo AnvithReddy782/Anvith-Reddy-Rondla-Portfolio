@@ -104,7 +104,7 @@
 
 @layer components {
   .container-main {
-    max-width: 1200px;
+    max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 1.5rem;
@@ -114,7 +114,7 @@
   @media (min-width: 1024px) { .container-main { padding-left: 3rem; padding-right: 3rem; } }
 
   .container-wide {
-    max-width: 1400px;
+    max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 1.5rem;
@@ -187,11 +187,16 @@
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 0.5rem;
-    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.02);
+    transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .card:hover {
     border-color: var(--color-border-hover);
     background-color: var(--color-surface-hover);
+    box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.05);
   }
 
   .btn-primary {
@@ -201,13 +206,33 @@
     border-radius: 0.375rem;
     font-weight: 500;
     font-size: 0.875rem;
-    transition: background-color 0.15s ease, transform 0.15s ease;
+    transition: background-color 0.2s ease, transform 0.1s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.18),
+      transparent
+    );
+    transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-primary:hover::after {
+    left: 100%;
   }
   .btn-primary:hover { background-color: var(--color-accent-hover); }
-  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary:active { transform: scale(0.97); }
 
   .btn-secondary {
     border: 1px solid var(--color-border);
@@ -216,12 +241,13 @@
     border-radius: 0.375rem;
     font-weight: 500;
     font-size: 0.875rem;
-    transition: border-color 0.15s ease, background-color 0.15s ease;
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.1s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
   }
   .btn-secondary:hover { border-color: var(--color-border-hover); background-color: var(--color-bg-elevated); }
+  .btn-secondary:active { transform: scale(0.97); }
 
   .badge {
     font-family: var(--font-mono);
@@ -272,9 +298,29 @@
   50% { transform: translateY(-10px) rotate(2deg); }
 }
 
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
 .pulse { animation: pulse 2s ease-in-out infinite; }
 .thread-pulse { animation: threadPulse 3s ease-in-out infinite; }
 .float { animation: float 6s ease-in-out infinite; }
+
+.marquee-left {
+  animation: marquee-left 40s linear infinite;
+}
+.marquee-right {
+  animation: marquee-right 35s linear infinite;
+}
+.marquee-pause:hover {
+  animation-play-state: paused;
+}
 
 .cursor-glow {
   position: fixed;
@@ -289,3 +335,153 @@
   opacity: 0;
 }
 .cursor-glow.active { opacity: 1; }
+
+/* Abstract pattern backgrounds for project cards */
+.pattern-annapurna {
+  background: linear-gradient(135deg, #C4704F 0%, #E8A87C 50%, #D4A574 100%);
+}
+.pattern-docai {
+  background: linear-gradient(135deg, #4A8B7F 0%, #6BAF9E 50%, #8CC5B5 100%);
+}
+.pattern-dpmums {
+  background: repeating-linear-gradient(45deg, #C4704F 0px, #C4704F 2px, transparent 2px, transparent 8px);
+}
+.pattern-reports {
+  background: repeating-linear-gradient(0deg, #4A8B7F 0px, #4A8B7F 1px, transparent 1px, transparent 12px);
+}
+.pattern-field {
+  background: radial-gradient(circle, #C4704F 1.5px, transparent 1.5px);
+  background-size: 8px 8px;
+}
+.pattern-vantage {
+  background: repeating-linear-gradient(-45deg, #4A8B7F 0px, #4A8B7F 1px, transparent 1px, transparent 6px);
+}
+.pattern-span {
+  background: repeating-linear-gradient(0deg, #C4704F 0px, #C4704F 1px, transparent 1px, transparent 6px),
+              repeating-linear-gradient(90deg, #C4704F 0px, #C4704F 1px, transparent 1px, transparent 6px);
+}
+.pattern-erp {
+  background: linear-gradient(135deg, #3A3836 25%, transparent 25%) -8px 0,
+              linear-gradient(225deg, #3A3836 25%, transparent 25%) -8px 0;
+}
+.pattern-bsec {
+  background: repeating-linear-gradient(90deg, #4A8B7F 0px, #4A8B7F 3px, transparent 3px, transparent 8px);
+}
+.pattern-scripts {
+  background: radial-gradient(circle, #8A8782 1px, transparent 1px);
+  background-size: 12px 12px;
+  opacity: 0.5;
+}
+
+/* SYSTEM AUDIT MODE GLOBAL INTERFACES */
+[data-audit="true"] {
+  --bg-primary: #050E0C; /* Deep digital ocean carbon */
+  --bg-secondary: #0A1C18;
+  --border-color: rgba(0, 180, 166, 0.4);
+  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s ease;
+}
+
+[data-audit="true"] body {
+  background-color: #050E0C;
+  color: #E6F3F0;
+}
+
+/* Glowing wireframe classes */
+[data-audit="true"] .audit-wireframe {
+  border: 1px dashed rgba(0, 180, 166, 0.5) !important;
+  box-shadow: 0 0 12px rgba(0, 180, 166, 0.08) !important;
+  background-color: rgba(10, 28, 24, 0.6) !important;
+  background-image: linear-gradient(rgba(0, 180, 166, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 180, 166, 0.03) 1px, transparent 1px) !important;
+  background-size: 20px 20px !important;
+}
+
+[data-audit="true"] .audit-wireframe-orange {
+  border: 1px dashed rgba(255, 107, 0, 0.6) !important;
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.08) !important;
+  background-color: rgba(255, 107, 0, 0.02) !important;
+}
+
+[data-audit="true"] .audit-wireframe-violet {
+  border: 1px dashed rgba(124, 111, 247, 0.6) !important;
+  box-shadow: 0 0 12px rgba(124, 111, 247, 0.08) !important;
+  background-color: rgba(124, 111, 247, 0.02) !important;
+}
+
+/* Floating debugging annotations tags */
+.audit-hud-tag {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  padding: 2px 6px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  z-index: 40;
+  pointer-events: none;
+}
+
+[data-audit="true"] .audit-hud-tag {
+  display: inline-block;
+  animation: auditPulse 2s infinite ease-in-out;
+}
+
+/* Audit Mode animations */
+@keyframes auditPulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+@keyframes scannerScan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
+/* Digital scanning scanner bar overlay */
+.audit-scanner {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background: linear-gradient(
+    to bottom,
+    transparent 49.5%,
+    rgba(0, 180, 166, 0.15) 49.5%,
+    rgba(0, 180, 166, 0.5) 50%,
+    rgba(0, 180, 166, 0.15) 50.5%,
+    transparent 50.5%
+  );
+  background-size: 100% 200%;
+  animation: scannerScan 4s linear infinite;
+  display: none;
+}
+
+[data-audit="true"] .audit-scanner {
+  display: block;
+}
+
+/* Custom premium minimalist scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-hover);
+  border-radius: 9999px;
+  border: 2px solid var(--color-bg);
+  transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Selection aesthetics */
+::selection {
+  background-color: var(--color-accent-subtle);
+  color: var(--color-accent);
+}
+

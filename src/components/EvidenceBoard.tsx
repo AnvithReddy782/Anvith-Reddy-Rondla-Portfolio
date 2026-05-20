@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
-import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
+import { useState, useCallback, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "@/lib/data";
 import { useMouseTilt } from "@/hooks/useMouseTilt";
-import { fadeInUp, staggerContainer, springSoft, springMedium } from "@/lib/animations";
 
 type ThreadType = "tech" | "problem" | "outcome";
 
@@ -13,20 +12,6 @@ export default function EvidenceBoard() {
   const [activeThread, setActiveThread] = useState<ThreadType>("problem");
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const boardRef = useRef<HTMLDivElement>(null);
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const rotateX = useTransform(mouseY, [-0.5, 0.5], [2, -2]);
-  const rotateY = useTransform(mouseX, [-0.5, 0.5], [-2, 2]);
-
-  const handleBoardMove = useCallback((e: React.MouseEvent) => {
-    if (!boardRef.current) return;
-    const rect = boardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(x);
-    mouseY.set(y);
-  }, [mouseX, mouseY]);
 
   const connectedIds = useCallback(() => {
     if (!activeId) return new Set<string>();
@@ -48,31 +33,33 @@ export default function EvidenceBoard() {
   };
 
   const threadDescriptions: Record<ThreadType, string> = {
-    tech: "Projects that share the same technical foundation",
-    problem: "Projects that solve the same category of problem",
-    outcome: "Projects that produced similar types of impact",
+    tech: "Same foundation, different use",
+    problem: "Same problem, different product",
+    outcome: "Same impact, different path",
   };
 
   const filteredProjects = projects.filter((p) => p.tier <= 3);
 
   return (
-    <section id="evidence" className="py-14 md:py-20">
+    <section id="evidence" className="py-10 md:py-14 relative transition-all duration-500 audit-wireframe">
+      <span className="audit-hud-tag absolute top-4 left-4 bg-[#00B4A6]/20 text-[#00B4A6] border border-[#00B4A6]/40 px-2 py-0.5 rounded text-[8px] z-20">
+        COMP: EVIDENCE_BOARD // FILTER: TIER &lt;= 3 // ACTIVE_THREAD: {activeThread.toUpperCase()}
+      </span>
       <div className="container-main">
         <motion.div
           className="mb-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          variants={fadeInUp}
+          variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}
         >
-          <span className="section-label">01 — Evidence</span>
-          <h2 className="section-heading">What I have actually shipped</h2>
+          <span className="section-label">01 — The Work</span>
+          <h2 className="section-heading">Ten products. Zero permission.</h2>
           <p className="section-desc">
-            Not a list. Proof. Every product started with a problem I noticed, a decision I made, and an outcome that matters.
+            Every product here started as a problem I noticed and nobody else was solving. I did not wait for a ticket. I did not ask for a budget. I built the thing and let the results speak.
           </p>
         </motion.div>
 
-        {/* Thread selector */}
         <motion.div
           className="flex flex-col sm:flex-row sm:items-center gap-3 mb-8"
           initial={{ opacity: 0, y: 10 }}
@@ -106,36 +93,7 @@ export default function EvidenceBoard() {
           </motion.span>
         </motion.div>
 
-        {/* Board with parallax */}
-        <motion.div
-          ref={boardRef}
-          onMouseMove={handleBoardMove}
-          onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
-          style={{ rotateX, rotateY, transformPerspective: 1200 }}
-          className="relative"
-        >
-          {/* SVG connection threads */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ overflow: "visible" }}>
-            {activeId && filteredProjects.map((project) => {
-              if (!connected.has(project.id)) return null;
-              const connIds = project.connections[activeThread] || [];
-              return connIds.map((connId) => {
-                if (!connected.has(connId)) return null;
-                return (
-                  <motion.line
-                    key={`${project.id}-${connId}`}
-                    x1="0" y1="0" x2="0" y2="0"
-                    stroke="var(--color-accent)"
-                    strokeWidth={1}
-                    opacity={0.15}
-                    className="thread-pulse"
-                  />
-                );
-              });
-            })}
-          </svg>
-
-          {/* Project grid */}
+        <div ref={boardRef} className="relative">
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 relative z-10">
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project, index) => {
@@ -152,9 +110,9 @@ export default function EvidenceBoard() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: isDimmed ? 0.2 : 1, y: 0 }}
                     viewport={{ once: true, margin: "-30px" }}
-                    transition={{ ...springSoft, delay: index * 0.04 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 25, delay: index * 0.04 }}
                     whileHover={!isDimmed ? { y: -2, transition: { duration: 0.15 } } : {}}
-                    className={`card p-4 cursor-pointer ${
+                    className={`card p-4 cursor-pointer overflow-hidden relative transition-all duration-500 audit-wireframe-orange ${
                       isActive ? "ring-1 ring-[var(--color-accent)]" : ""
                     } ${isDimmed ? "opacity-20 pointer-events-none" : ""}`}
                     onMouseEnter={() => { setActiveId(project.id); tilt.handlers.onMouseEnter?.(); }}
@@ -164,6 +122,16 @@ export default function EvidenceBoard() {
                     ref={tilt.ref}
                     style={tilt.style}
                   >
+                    <span className="audit-hud-tag absolute top-1 right-2 bg-[#FF6B00]/25 text-[#FF6B00] border border-[#FF6B00]/40 px-1.5 py-0.2 rounded text-[7px] font-mono select-none z-10">
+                      ID: {project.id} // INDEX: {index} // TILT: 5deg
+                    </span>
+                    {/* Abstract Pattern Strip */}
+                    <div className={`-mx-4 -mt-4 mb-3 h-12 ${project.pattern} relative overflow-hidden rounded-t-lg`}>
+                      <span className="absolute inset-0 flex items-center justify-center text-4xl font-heading font-light text-white/25 select-none">
+                        {project.monogram}
+                      </span>
+                    </div>
+
                     {/* Header */}
                     <div className="flex items-start justify-between gap-3 mb-2">
                       <div className="flex items-center gap-2">
@@ -215,20 +183,20 @@ export default function EvidenceBoard() {
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
-                          transition={springMedium}
+                          transition={{ type: "spring", stiffness: 300, damping: 20 }}
                           className="overflow-hidden"
                         >
                           <div className="mt-3 pt-3 border-t border-[var(--color-border)] space-y-2.5">
                             <div>
-                              <span className="label-accent">The problem</span>
+                              <span className="label-accent">What I noticed</span>
                               <p className="text-sm text-[var(--color-text-secondary)] mt-0.5">{project.problem}</p>
                             </div>
                             <div>
-                              <span className="label-signal">The decision</span>
+                              <span className="label-signal">What I chose</span>
                               <p className="text-sm text-[var(--color-text-secondary)] mt-0.5">{project.decision}</p>
                             </div>
                             <div>
-                              <span className="label">The outcome</span>
+                              <span className="label">What happened</span>
                               <p className="text-sm text-[var(--color-text-secondary)] mt-0.5">{project.outcome}</p>
                             </div>
                             <div className="flex flex-wrap gap-1.5 pt-1">
@@ -245,7 +213,7 @@ export default function EvidenceBoard() {
 
                     {!isExpanded && (
                       <div className="mt-2 flex items-center gap-1.5 text-[10px] font-mono text-[var(--color-text-faint)]">
-                        <span>Click for decision trail</span>
+                        <span>See how I thought about this</span>
                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5">
                           <path d="M3 1l4 4-4 4" />
                         </svg>
@@ -256,7 +224,7 @@ export default function EvidenceBoard() {
               })}
             </AnimatePresence>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

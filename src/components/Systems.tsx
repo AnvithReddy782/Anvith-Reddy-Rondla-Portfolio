@@ -1,29 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { personalInfo } from "@/lib/data";
-import { fadeInUp, staggerContainer, springSoft } from "@/lib/animations";
 import { useMouseTilt } from "@/hooks/useMouseTilt";
 import { useCountUp } from "@/hooks/useCountUp";
 
+const flowSteps = [
+  { label: "FIELD_APP", desc: "Data capture with validation" },
+  { label: "LOGIC_HUB", desc: "Processing and routing engine" },
+  { label: "DASHBOARD", desc: "Role-based HTML delivery" },
+  { label: "NOTIFY_SVC", desc: "Automated alerts and reports" },
+];
+
+const capabilities = [
+  { title: "Edge deployment", description: "Local-first data persistence with cloud sync. Built for the worst connectivity, not the best.", color: "accent" },
+  { title: "Logic engines", description: "Deterministic state machines for field workers. No ambiguity. No edge cases left unhandled.", color: "signal" },
+  { title: "Zero fail state", description: "Automated retry logic for low-connectivity zones. The system does not break when the network does.", color: "muted" },
+];
+
+const liveSystems = [
+  { name: "Annapurna Collections", status: "production" },
+  { name: "Reports Automation", status: "production" },
+  { name: "DPMUMS", status: "testing" },
+  { name: "DOC AI", status: "functional" },
+  { name: "Field Reporter", status: "functional" },
+  { name: "Vantage OS", status: "functional" },
+  { name: "Span Finder Pro", status: "functional" },
+  { name: "GlobusIT ERP", status: "development" },
+  { name: "BSEC Recruitment", status: "functional" },
+];
+
 export default function Systems() {
-  const capabilities = [
-    { title: "Edge deployment", description: "Local-first data persistence with cloud sync. Built for the worst connectivity, not the best.", color: "accent" },
-    { title: "Logic engines", description: "Deterministic state machines for field workers. No ambiguity. No edge cases left unhandled.", color: "signal" },
-    { title: "Zero fail state", description: "Automated retry logic for low-connectivity zones. The system does not break when the network does.", color: "muted" },
-  ];
-
-  const flowSteps = [
-    { label: "FIELD_APP", desc: "Data capture with validation" },
-    { label: "LOGIC_HUB", desc: "Processing and routing engine" },
-    { label: "DASHBOARD", desc: "Role-based HTML delivery" },
-    { label: "NOTIFY_SVC", desc: "Automated alerts and reports" },
-  ];
-
   const pingsCount = useCountUp(1.2, { prefix: "", suffix: "M+", decimals: 1, duration: 2 });
 
   return (
-    <section id="systems" className="py-14 md:py-20 relative overflow-hidden">
+    <section id="systems" className="py-10 md:py-14 relative overflow-hidden transition-all duration-500 audit-wireframe">
+      <span className="audit-hud-tag absolute top-4 left-4 bg-[#00B4A6]/20 text-[#00B4A6] border border-[#00B4A6]/40 px-2 py-0.5 rounded text-[8px] z-20">
+        COMP: SYSTEMS_ARCHITECTURE // AGGREGATE_PINGS: 1.2M+ // STACK: deterministic-state-machines
+      </span>
       <div className="absolute top-10 right-0 text-[clamp(8rem,20vw,16rem)] font-heading font-bold text-[var(--color-text)] opacity-[0.02] pointer-events-none select-none leading-none">
         03
       </div>
@@ -34,24 +47,24 @@ export default function Systems() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          variants={fadeInUp}
+          variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}
         >
-          <span className="section-label">03 — Systems</span>
-          <h2 className="section-heading">Can I handle complexity?</h2>
+          <span className="section-label">03 — The Architecture</span>
+          <h2 className="section-heading">Built for the worst conditions.</h2>
           <p className="section-desc">
-            1.2M+ pings per month across all systems. Every one designed to survive real-world conditions — bad networks, confused users, and zero maintenance budget.
+            Every system here runs in places with bad internet, confused users, and zero maintenance budget. They do not just work — they survive.
           </p>
         </motion.div>
 
-        {/* Architecture flow */}
+        {/* Architecture Flow */}
         <motion.div
           className="mb-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-30px" }}
-          variants={fadeInUp}
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}
         >
-          <span className="label mb-4 block">System architecture pattern</span>
+          <span className="label mb-4 block">How data flows through my systems</span>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
             {flowSteps.map((step, i) => (
               <motion.div
@@ -60,9 +73,12 @@ export default function Systems() {
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1, ...springSoft }}
+                transition={{ delay: i * 0.1, type: "spring", stiffness: 200, damping: 25 }}
               >
-                <div className="card p-4">
+                <span className="audit-hud-tag absolute -top-1.5 right-1.5 bg-[#FF6B00]/25 text-[#FF6B00] border border-[#FF6B00]/40 px-1.5 py-0.2 rounded text-[7px] font-mono z-10 select-none">
+                  SEQ: 0{i+1}
+                </span>
+                <div className="card p-4 transition-all duration-500 audit-wireframe-orange">
                   <div className="flex items-center gap-2.5 mb-1.5">
                     <motion.div
                       className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"
@@ -83,25 +99,28 @@ export default function Systems() {
           </div>
         </motion.div>
 
-        {/* Capabilities with 3D tilt */}
+        {/* Capability Cards */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8"
-          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-30px" }}
+          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.08 } } }}
         >
           {capabilities.map((cap, i) => {
             const tilt = useMouseTilt({ maxRotation: 6, perspective: 800, scale: 1.01 });
             return (
               <motion.div
                 key={i}
-                className="card p-5"
-                variants={fadeInUp}
+                className="card p-5 relative transition-all duration-500 audit-wireframe-violet"
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}
                 ref={tilt.ref}
                 style={tilt.style}
                 {...tilt.handlers}
               >
+                <span className="audit-hud-tag absolute -top-1.5 right-1.5 bg-[#7C6FF7]/25 text-[#7C6FF7] border border-[#7C6FF7]/40 px-1.5 py-0.2 rounded text-[7px] font-mono z-10 select-none">
+                  CAP_ID: 0{i+1} // LATENCY: 0.05MS
+                </span>
                 <div className={`w-9 h-9 rounded-lg mb-3 flex items-center justify-center ${
                   cap.color === "accent" ? "bg-[var(--color-accent-subtle)] text-[var(--color-accent)]" :
                   cap.color === "signal" ? "bg-[var(--color-signal-subtle)] text-[var(--color-signal)]" :
@@ -120,15 +139,40 @@ export default function Systems() {
           })}
         </motion.div>
 
-        {/* Aggregate scale */}
+        {/* Live Status Panel */}
+        <motion.div
+          className="card p-5 mb-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-30px" }}
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}
+        >
+          <span className="label-signal mb-3 block">System Status</span>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+            {liveSystems.map((sys, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span className={`w-1.5 h-1.5 rounded-full ${
+                  sys.status === "production" ? "bg-[var(--color-signal)]" :
+                  sys.status === "functional" ? "bg-[var(--color-accent)]" :
+                  sys.status === "testing" ? "bg-[var(--color-accent)] opacity-60" :
+                  "bg-[var(--color-text-faint)]"
+                }`} />
+                <span className="text-xs text-[var(--color-text-secondary)]">{sys.name}</span>
+              </div>
+            ))}
+          </div>
+          <span className="label text-[var(--color-signal)] mt-3 block">7 of 9 systems currently active</span>
+        </motion.div>
+
+        {/* Aggregate Scale */}
         <motion.div
           className="card p-6 md:p-8 text-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-30px" }}
-          variants={fadeInUp}
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}
         >
-          <span className="label text-[var(--color-text-faint)] mb-1.5 block">Aggregate scale</span>
+          <span className="label text-[var(--color-text-faint)] mb-1.5 block">All systems, combined</span>
           <span className="text-4xl md:text-5xl font-heading font-medium text-[var(--color-signal)]" ref={pingsCount.ref}>
             {pingsCount.value}
           </span>
