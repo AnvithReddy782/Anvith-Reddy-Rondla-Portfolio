@@ -1,6 +1,7 @@
 # Project State: Anvith Portfolio (Spatial Blueprint)
 
 ## Current Status
+- **Active Milestone**: Milestone 2: Zero-Reference Design Refactoring
 - **Active Phase**: Phase 1: Spatial Runtime & GLSL (RE-FIXING)
 - **Status**: Planning
 - **Last Sync**: 2026-07-12
@@ -11,21 +12,21 @@
 - [ ] Phase 1 Verification Passed
 
 ## Milestones & Roadmap
-- **v1 (World-Class Standard)**
+- **Milestone 2 (Design Refactoring)**
   - [ ] **Phase 1**: Spatial Runtime & GLSL (RE-FIXING) — *In Progress*
-  - [ ] **Phase 2**: The Entry Sequence & Identity — *Not Started*
-  - [ ] **Phase 3**: The PM Layer & Artifacts — *Not Started*
-  - [ ] **Phase 4**: Kinetic Typography & Nav — *Not Started*
-  - [ ] **Phase 5**: The Neural Skill Web — *Not Started*
-  - [ ] **Phase 6**: Product Engine & Case Studies — *Not Started*
-  - [ ] **Phase 7**: The Terminal & AI Assistant — *Not Started*
-  - [ ] **Phase 8**: Cinematic Polish & Optimization — *Not Started*
+  - [ ] **Phase 2**: Design Tokens & Entry Sequence — *Not Started*
+  - [ ] **Phase 3**: Layout Split-Grid & About Section — *Not Started*
+  - [ ] **Phase 4**: Products Built Grid (Tiered) — *Not Started*
+  - [ ] **Phase 5**: PM Layer & Artifact Gallery — *Not Started*
+  - [ ] **Phase 6**: Systems Running & Migration Timeline — *Not Started*
+  - [ ] **Phase 7**: Interactive Terminal & AI Assistant — *Not Started*
+  - [ ] **Phase 8**: Final Polish & Optimization — *Not Started*
 
 ## Active Concerns & Tech Debt
-1. **Legacy Branding in Planning Documents**: "Axiom" still appears in some docs.
-2. **TypeScript Build & Linting Status**: Unverified ESLint checks.
-3. **Performance & Large Assets**: Large `profile.png` (692 KB) needs WebP conversion.
-4. **Infrastructure Costs**: Strict free-tier dependency needs monitoring.
+1. **Zero-Reference Implementation Requirement**: Ensure absolutely no code is reused from existing component layouts.
+2. **Branding Correction**: Clean up references to "Axiom" in other documents.
+3. **TypeScript & Linting**: Compile must remain error-free.
+4. **Asset Optimization**: profile.png (692 KB) needs compression to under 100 KB.
 
 ## Project Memory & Context
 - **PRD**: [PRD](file:///c:/Users/anvit/OneDrive/Desktop/The%20Cursor%20Projects/Anvith%20Reddy%20Rondla/PRD)
