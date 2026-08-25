@@ -1,124 +1,106 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { personalInfo } from "@/lib/data";
-import { useState } from "react";
+
+const story = [
+  "I joined Globus Informatics as a data analyst, inheriting messy spreadsheets and field operations reported through WhatsApp chats across 38 districts. Nobody asked me to fix it.",
+  "I built location-aware reporting tools on Apps Script and Leaflet anyway, cutting tower lookup cycles from 48 hours to under 2 seconds.",
+  "Shipping zero-cost systems that worked for real operators in rural blocks fast-tracked me to Junior PM in 14 months.",
+  "I now lead database strategy, BRD modelling, and API integrations for tracking platforms deployed across Bihar and Telangana.",
+];
+
+const principles = [
+  {
+    title: "Document before building",
+    body: "Every product starts with a BRD and an ERD. Mapping the schema first prevents rewrite cycles later.",
+  },
+  {
+    title: "Production is the teacher",
+    body: "I learned Next.js by shipping it to state-level databases — not by finishing tutorials.",
+  },
+  {
+    title: "AI accelerates, never replaces reasoning",
+    body: "I use AI to code faster, but the database design and systems thinking stay mine.",
+  },
+  {
+    title: "Zero-cost infrastructure",
+    body: "Every system I've built runs in production on free-tier hosting. Scale is a design decision, not a budget line.",
+  },
+];
 
 export default function About() {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(personalInfo.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const reduce = useReducedMotion();
 
   return (
-    <section id="about" className="py-10 md:py-14 relative overflow-hidden">
-      <div className="absolute top-10 right-0 text-[clamp(8rem,20vw,16rem)] font-heading font-bold text-[var(--color-text)] opacity-[0.02] pointer-events-none select-none leading-none">
-        04
-      </div>
-
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "repeating-linear-gradient(transparent, transparent 31px, var(--color-border) 31px, var(--color-border) 32px)",
-          opacity: 0.15,
-        }}
-      />
-
-      <div className="container-main relative z-10">
+    <section id="about" className="scroll-mt-20 border-t border-line py-24 md:py-32">
+      <div className="container-main grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
+        {/* Story */}
         <motion.div
-          className="mb-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}
+          className="lg:col-span-7"
+          initial={reduce ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="section-label">04 / The Person</span>
-          <h2 className="section-heading">The short version.</h2>
+          <span className="label mb-6 block">About</span>
+          <h2 className="display-lg max-w-[16ch]">
+            Promoted for shipping<span className="text-accent">,</span> not
+            credentials<span className="text-accent">.</span>
+          </h2>
+
+          <div className="mt-9 space-y-5">
+            {story.map((paragraph) => (
+              <p key={paragraph.slice(0, 24)} className="max-w-[62ch] text-[15px] leading-relaxed text-secondary md:text-base">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <dl className="mt-10 grid max-w-lg grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 sm:grid-cols-3">
+            <div>
+              <dt className="label mb-1.5">Education</dt>
+              <dd className="text-sm leading-snug text-text">
+                B.Tech, Computer Science
+                <span className="mt-0.5 block text-xs text-muted">
+                  Holy Mary Institute of Technology
+                </span>
+              </dd>
+            </div>
+            <div>
+              <dt className="label mb-1.5">Reading</dt>
+              <dd className="text-sm leading-snug text-text">{personalInfo.currently.reading}</dd>
+            </div>
+            <div>
+              <dt className="label mb-1.5">Thinking about</dt>
+              <dd className="text-sm leading-snug text-text">{personalInfo.currently.thinking}</dd>
+            </div>
+          </dl>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-          {/* Story */}
+        {/* Principles */}
+        <div className="lg:col-span-5">
           <motion.div
-            className="lg:col-span-3"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-30px" }}
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}
+            className="border border-line bg-surface p-7 lg:sticky lg:top-24"
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="space-y-4 mb-6">
-              {personalInfo.story.map((paragraph, i) => (
-                <p key={i} className="text-lg text-[var(--color-text-secondary)] leading-relaxed text-balance">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-
-            {/* Philosophy */}
-            <motion.div className="space-y-3" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.06 } } }} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-              {personalInfo.philosophy.map((line, i) => (
-                <motion.div key={i} className="flex gap-3 items-start" variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}>
-                  <span className="label text-[var(--color-text-faint)] mt-0.5 flex-shrink-0">
+            <span className="label block">How I work</span>
+            <ol className="mt-6 divide-y divide-line border-y border-line">
+              {principles.map((p, i) => (
+                <li key={p.title} className="flex gap-5 py-5 first:pt-0 last:pb-0">
+                  <span className="tabular pt-0.5 font-mono text-xs text-accent">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{line}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          {/* Sidebar */}
-          <motion.div
-            className="lg:col-span-2 space-y-3"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-30px" }}
-            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.08 } } }}
-          >
-            {/* Currently */}
-            <motion.div className="card p-4" variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}>
-              <span className="label-accent mb-3 block">Right now</span>
-              <div className="space-y-3">
-                {[
-                  { label: "Building", value: personalInfo.currently.building, color: "label-accent" },
-                  { label: "Reading", value: personalInfo.currently.reading, color: "label" },
-                  { label: "Thinking", value: personalInfo.currently.thinking, color: "label" },
-                ].map((item, i, arr) => (
-                  <div key={i}>
-                    <span className={item.color}>{item.label}</span>
-                    <p className="text-sm text-[var(--color-text-secondary)] mt-0.5">{item.value}</p>
-                    {i < arr.length - 1 && <div className="divider mt-3" />}
+                  <div>
+                    <h3 className="font-heading text-[15px] font-semibold text-text">{p.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-secondary">{p.body}</p>
                   </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Location */}
-            <motion.div className="card p-4" variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}>
-              <span className="label text-[var(--color-text-faint)] mb-1 block">Based in</span>
-              <p className="text-sm text-[var(--color-text)]">{personalInfo.location}</p>
-            </motion.div>
-
-            {/* Contact */}
-            <motion.div className="card p-4" variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 25 } } }}>
-              <span className="label text-[var(--color-text-faint)] mb-1 block">Reach me at</span>
-              <motion.button
-                onClick={handleCopyEmail}
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-                className="text-sm text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors flex items-center gap-2"
-              >
-                {personalInfo.email}
-                <motion.span
-                  animate={copied ? { opacity: 1, x: 0 } : { opacity: 0, x: -5 }}
-                  className="text-[var(--color-signal)] text-xs"
-                >
-                  Copied
-                </motion.span>
-              </motion.button>
-            </motion.div>
+                </li>
+              ))}
+            </ol>
           </motion.div>
         </div>
       </div>

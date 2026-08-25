@@ -1,25 +1,27 @@
-@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=general-sans@200,300,400,500,600,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-bg: transparent;
-  --color-surface: #141414;
-  --color-raised: #1C1C1C;
-  --color-text: #F2EDE4;
-  --color-text-secondary: #888580;
-  --color-text-faint: #3A3836;
-  --color-accent: #FF6B00;
-  --color-teal: #00B4A6;
-  --color-violet: #7C6FF7;
+  /* Ink & paper — warm dark editorial system */
+  --color-bg: #0a0a09;
+  --color-sunk: #0e0e0c;
+  --color-surface: #141412;
+  --color-raised: #1b1b18;
 
-  --color-border-default: rgba(242, 237, 228, 0.08);
-  --color-border-hover: rgba(242, 237, 228, 0.14);
-  --color-border-active: rgba(242, 237, 228, 0.24);
+  --color-text: #ede8dc;
+  --color-secondary: #a39d90;
+  --color-muted: #6f6b60;
+  --color-faint: #45423a;
 
-  --font-heading: "Clash Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-body: "General Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", "SFMono-Regular", "Cascadia Code", Consolas, monospace;
+  /* One working accent + one semantic status color */
+  --color-accent: #ff6b00;
+  --color-signal: #00b4a6;
+
+  --color-line: rgba(237, 232, 220, 0.08);
+  --color-line-strong: rgba(237, 232, 220, 0.18);
+
+  --font-heading: "Clash Display", "General Sans", -apple-system, "Segoe UI", sans-serif;
+  --font-body: "General Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
 }
 
 @layer base {
@@ -30,49 +32,32 @@
   }
 
   html {
-    scroll-behavior: auto;
+    background-color: var(--color-bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    background-color: #0A0A0A;
+    scroll-padding-top: 5rem;
   }
 
   body {
-    background-color: transparent;
+    background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-body);
     font-size: 1rem;
-    line-height: 1.75;
+    line-height: 1.7;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4 {
     font-family: var(--font-heading);
     font-weight: 600;
     color: var(--color-text);
     text-wrap: balance;
   }
 
-  /* Specific typography rules from PRD */
-  h1 {
-    font-size: clamp(2.5rem, 5.5vw, 5.5rem);
-    letter-spacing: -0.025em;
-  }
-
-  h2 {
-    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-    letter-spacing: -0.015em;
-  }
-
-  h3 {
-    font-size: clamp(1.25rem, 2vw, 1.75rem);
-    letter-spacing: -0.015em;
-  }
-
   p {
-    color: var(--color-text-secondary);
-    line-height: 1.75;
-    max-width: 68ch; /* Rule: max 68 characters per line */
+    color: var(--color-secondary);
+    max-width: 65ch;
   }
 
   a {
@@ -85,44 +70,180 @@
     cursor: pointer;
     border: none;
     background: none;
+    color: inherit;
   }
 
-  /* Custom selection styling mapping to Saffron Orange */
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
   ::selection {
-    background-color: rgba(255, 107, 0, 0.25);
-    color: #F2EDE4;
+    background-color: rgba(255, 107, 0, 0.28);
+    color: var(--color-text);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Single shared container — every section aligns to this */
+  .container-main {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 76rem;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .container-main {
+      padding-inline: 2rem;
+    }
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .display-xl {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+  }
+
+  .display-lg {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.018em;
+    line-height: 1.05;
+    font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background-color: var(--color-accent);
+    color: #16120c;
+    transition: background-color 200ms ease, transform 150ms ease;
+  }
+  .btn-primary:hover {
+    background-color: #ff8226;
+  }
+  .btn-primary:active {
+    transform: translateY(1px);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px solid var(--color-line-strong);
+    color: var(--color-text);
+    transition: border-color 200ms ease, background-color 200ms ease, transform 150ms ease;
+  }
+  .btn-secondary:hover {
+    border-color: var(--color-text);
+    background-color: var(--color-surface);
+  }
+  .btn-secondary:active {
+    transform: translateY(1px);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.02em;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid var(--color-line);
+    color: var(--color-secondary);
+    white-space: nowrap;
+  }
+
+  .panel {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-line);
   }
 }
 
 @layer utilities {
-  /* CSS-only background dot grid */
-  .dot-grid {
-    background-image: radial-gradient(rgba(242, 237, 228, 0.04) 1px, transparent 1px);
-    background-size: 24px 24px;
+  .tabular {
+    font-variant-numeric: tabular-nums;
   }
 
-  .font-mono-tracked {
-    font-family: var(--font-mono);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  /* Film-grain texture — fixed, non-interactive, GPU-cheap */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+
+  /* Subtle static dot field for select sections */
+  .dotfield {
+    background-image: radial-gradient(rgba(237, 232, 220, 0.05) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+
+  /* Full-viewport height with small-viewport fallback for mobile browsers */
+  .hero-height {
+    min-height: 100vh;
+  }
+  @supports (height: 100svh) {
+    .hero-height {
+      min-height: 100svh;
+    }
   }
 }
 
-/* Custom scrollbar matching design aesthetics */
+/* Reduced motion — collapse everything to instant */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #0A0A0A;
+  background: var(--color-bg);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border-default);
-  border-radius: 3px;
+  background: var(--color-raised);
+  border: 2px solid var(--color-bg);
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-border-hover);
+  background: var(--color-muted);
 }

@@ -4,41 +4,38 @@ import { useEffect, useRef } from "react";
 
 interface LenisOptions {
   lerp?: number;
-  duration?: number;
   smoothWheel?: boolean;
 }
 
 export function useLenis(options: LenisOptions = {}) {
-  const lenisRef = useRef<any>(null);
+  const optionsRef = useRef(options);
+  optionsRef.current = options;
 
   useEffect(() => {
-    let lenis: any;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let lenis: { raf: (t: number) => void; destroy: () => void } | null = null;
+    let rafId = 0;
 
     const init = async () => {
       const { default: Lenis } = await import("lenis");
       lenis = new Lenis({
-        lerp: options.lerp ?? 0.08,
-        duration: options.duration ?? 0,
-        smoothWheel: options.smoothWheel ?? true,
+        lerp: optionsRef.current.lerp ?? 0.09,
+        smoothWheel: optionsRef.current.smoothWheel ?? true,
       });
 
-      function raf(time: number) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-
-      requestAnimationFrame(raf);
-      lenisRef.current = lenis;
+      const raf = (time: number) => {
+        lenis?.raf(time);
+        rafId = requestAnimationFrame(raf);
+      };
+      rafId = requestAnimationFrame(raf);
     };
 
     init();
 
     return () => {
-      if (lenis) {
-        lenis.destroy();
-      }
+      cancelAnimationFrame(rafId);
+      lenis?.destroy();
     };
-  }, [options.lerp, options.duration, options.smoothWheel]);
-
-  return lenisRef;
+  }, []);
 }

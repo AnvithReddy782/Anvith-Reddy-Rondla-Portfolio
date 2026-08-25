@@ -1,24 +1,16 @@
 "use client";
 
-import { ThemeProvider } from "next-themes";
+import { useEffect } from "react";
 import { useLenis } from "@/hooks/useLenis";
 import ScrollProgress from "@/components/ScrollProgress";
-import dynamic from "next/dynamic";
-import IntroSequence from "@/components/IntroSequence";
-
-const SpatialCanvas = dynamic(() => import("./canvas/SpatialCanvas"), {
-  ssr: false,
-});
 
 export default function ClientProviders({ children }: { children: React.ReactNode }) {
-  useLenis({ lerp: 0.08, duration: 0, smoothWheel: true });
+  useLenis({ lerp: 0.09, smoothWheel: true });
 
   return (
-    <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
-      <IntroSequence />
+    <>
       <ScrollProgress />
       {children}
-      <SpatialCanvas />
-    </ThemeProvider>
+    </>
   );
 }

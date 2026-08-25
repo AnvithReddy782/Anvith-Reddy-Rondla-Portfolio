@@ -1,0 +1,1 @@
+{"version":"1","eventId":"9df30c0e-2ce8-4314-945c-cb325cea9829","traceId":"workflow-log:memory-store","category":"orchestration","type":"workflow-log-warn","ts":"2026-07-11T19:13:36.038Z","payload":{"component":"memory-store","message":"FTS5 unavailable — using LIKE fallback scan (consider enabling FTS5)","context":{}}}

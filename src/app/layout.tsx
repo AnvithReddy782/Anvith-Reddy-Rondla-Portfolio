@@ -18,7 +18,6 @@ export const metadata: Metadata = {
     "AI Engineer",
     "Systems Builder",
     "RAG",
-    "LangChain",
     "Next.js",
     "Government Tech",
     "Portfolio",
@@ -84,7 +83,6 @@ const personJsonLd = {
     "Product Management",
     "Artificial Intelligence",
     "Retrieval-Augmented Generation",
-    "LangChain",
     "Python",
     "Next.js",
     "PostgreSQL",
@@ -108,12 +106,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&f[]=general-sans@400,500,600&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
+        <meta name="theme-color" content="#0a0a09" />
       </head>
-      <body className="min-h-screen bg-[var(--color-bg)] transition-colors duration-300 antialiased">
+      <body className="grain min-h-screen antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[var(--color-accent)] focus:text-white focus:rounded"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[var(--color-accent)] focus:text-[#16120c] focus:text-sm focus:font-medium"
         >
           Skip to main content
         </a>

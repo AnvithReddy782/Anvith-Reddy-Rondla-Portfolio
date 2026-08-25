@@ -1,0 +1,3 @@
+{"id":"1e42a131-3674-48a8-a6ef-152a0caaa2de","ts":"2026-07-11T19:13:35.626Z","severity":"info","message":"GSD MCP Server Prepared at C:\\Users\\anvit\\OneDrive\\Desktop\\The Cursor Projects\\Anvith Reddy Rondla\\.mcp.json","source":"notify","read":false}
+{"id":"86805c22-23bd-4b15-a548-9faa5a3f36fa","ts":"2026-07-11T19:13:35.900Z","severity":"warning","message":"[db] FTS5 unavailable — memory queries will use LIKE fallback: no such module: fts5","source":"workflow-logger","read":false}
+{"id":"7a80f089-a721-4b83-9196-0735b4b7cfbf","ts":"2026-07-11T19:13:36.037Z","severity":"warning","message":"[memory-store] FTS5 unavailable — using LIKE fallback scan (consider enabling FTS5)","source":"workflow-logger","read":false}
