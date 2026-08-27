@@ -2,30 +2,31 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { personalInfo } from "@/lib/data";
+import { Card } from "@/components/ui/card";
 
 const story = [
-  "I joined Globus Informatics as a data analyst, inheriting messy spreadsheets and field operations reported through WhatsApp chats across 38 districts. Nobody asked me to fix it.",
-  "I built location-aware reporting tools on Apps Script and Leaflet anyway, cutting tower lookup cycles from 48 hours to under 2 seconds.",
-  "Shipping zero-cost systems that worked for real operators in rural blocks fast-tracked me to Junior PM in 14 months.",
-  "I now lead database strategy, BRD modelling, and API integrations for tracking platforms deployed across Bihar and Telangana.",
+  "I joined Globus Informatics as a Data Analyst, inheriting fragmented spreadsheets and unstructured WhatsApp chat logs across 38 state districts.",
+  "Instead of accepting the status quo, I spent time understanding field operator habits, mapped the technical constraints of rural 2G connections, and built offline-first spatial tools on Leaflet and Apps Script, cutting tower lookup cycles from 48 hours to under 2 seconds.",
+  "Shipping zero-friction systems that real field engineers actually adopted earned me a promotion to Junior Product Manager in 14 months.",
+  "Today, I lead product discovery, PRD authoring, database schema modeling, and API integrations for mission-critical portals deployed across Bihar and Telangana state contracts.",
 ];
 
 const principles = [
   {
-    title: "Document before building",
-    body: "Every product starts with a BRD and an ERD. Mapping the schema first prevents rewrite cycles later.",
+    title: "Discover in the field, not in a silo",
+    body: "The best product insights come from watching non-technical users struggle on low-end hardware, not from building for ideal network conditions.",
   },
   {
-    title: "Production is the teacher",
-    body: "I learned Next.js by shipping it to state-level databases — not by finishing tutorials.",
+    title: "Document before writing code",
+    body: "Every product starts with clear user stories, a PRD, and an ERD. Aligning on state machines first prevents costly rewrite cycles later.",
   },
   {
-    title: "AI accelerates, never replaces reasoning",
-    body: "I use AI to code faster, but the database design and systems thinking stay mine.",
+    title: "AI accelerates, human reasoning decides",
+    body: "I leverage agentic AI to prototype and code faster, but product strategy, edge-case handling, and systems thinking remain human-driven.",
   },
   {
-    title: "Zero-cost infrastructure",
-    body: "Every system I've built runs in production on free-tier hosting. Scale is a design decision, not a budget line.",
+    title: "Lean, high-ROI architecture",
+    body: "Scale is a design discipline, not a bloated cloud budget. Using edge compute and local browser caches delivers enterprise-grade speed on zero CapEx.",
   },
 ];
 
@@ -33,74 +34,74 @@ export default function About() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="about" className="scroll-mt-20 border-t border-line py-24 md:py-32">
-      <div className="container-main grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
-        {/* Story */}
+    <section id="about" className="scroll-mt-20 border-t border-line py-14 md:py-18">
+      <div className="container-main grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 items-start">
+        {/* Left Column: Trajectory Story */}
         <motion.div
           className="lg:col-span-7"
-          initial={reduce ? false : { opacity: 0, y: 24 }}
+          initial={reduce ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="label mb-6 block">About</span>
-          <h2 className="display-lg max-w-[16ch]">
-            Promoted for shipping<span className="text-accent">,</span> not
-            credentials<span className="text-accent">.</span>
+          <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-accent mb-1.5 block">
+            About & Trajectory
+          </span>
+          <h2 className="display-lg max-w-[20ch]">
+            Promoted for shipping systems that solve field bottlenecks<span className="text-accent">.</span>
           </h2>
 
-          <div className="mt-9 space-y-5">
+          <div className="mt-6 space-y-3.5">
             {story.map((paragraph) => (
-              <p key={paragraph.slice(0, 24)} className="max-w-[62ch] text-[15px] leading-relaxed text-secondary md:text-base">
+              <p key={paragraph.slice(0, 24)} className="max-w-[60ch] text-xs sm:text-sm leading-relaxed text-secondary">
                 {paragraph}
               </p>
             ))}
           </div>
 
-          <dl className="mt-10 grid max-w-lg grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 sm:grid-cols-3">
+          <div className="mt-6 grid max-w-lg grid-cols-2 gap-x-6 gap-y-4 border-t border-line pt-5 sm:grid-cols-3 font-mono text-xs">
             <div>
-              <dt className="label mb-1.5">Education</dt>
-              <dd className="text-sm leading-snug text-text">
-                B.Tech, Computer Science
-                <span className="mt-0.5 block text-xs text-muted">
-                  Holy Mary Institute of Technology
-                </span>
-              </dd>
+              <span className="text-[10px] uppercase text-muted block mb-0.5">Education</span>
+              <span className="text-text font-medium block">B.Tech, CSE</span>
+              <span className="text-[11px] text-muted block">Holy Mary Inst.</span>
             </div>
             <div>
-              <dt className="label mb-1.5">Reading</dt>
-              <dd className="text-sm leading-snug text-text">{personalInfo.currently.reading}</dd>
+              <span className="text-[10px] uppercase text-muted block mb-0.5">Currently Reading</span>
+              <span className="text-text font-medium text-[11px] block">{personalInfo.currently.reading}</span>
             </div>
             <div>
-              <dt className="label mb-1.5">Thinking about</dt>
-              <dd className="text-sm leading-snug text-text">{personalInfo.currently.thinking}</dd>
+              <span className="text-[10px] uppercase text-muted block mb-0.5">Focus Area</span>
+              <span className="text-text font-medium text-[11px] block">{personalInfo.currently.thinking}</span>
             </div>
-          </dl>
+          </div>
         </motion.div>
 
-        {/* Principles */}
+        {/* Right Column: Operating Principles Card */}
         <div className="lg:col-span-5">
           <motion.div
-            className="border border-line bg-surface p-7 lg:sticky lg:top-24"
-            initial={reduce ? false : { opacity: 0, y: 24 }}
+            initial={reduce ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="label block">How I work</span>
-            <ol className="mt-6 divide-y divide-line border-y border-line">
-              {principles.map((p, i) => (
-                <li key={p.title} className="flex gap-5 py-5 first:pt-0 last:pb-0">
-                  <span className="tabular pt-0.5 font-mono text-xs text-accent">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h3 className="font-heading text-[15px] font-semibold text-text">{p.title}</h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-secondary">{p.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
+            <Card className="p-5 sm:p-6 shadow-2xs">
+              <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-accent block mb-3">
+                Operating Principles
+              </span>
+              <ol className="divide-y divide-line/70 border-t border-line/70">
+                {principles.map((p, i) => (
+                  <li key={p.title} className="flex gap-3.5 py-3.5 first:pt-3 last:pb-0">
+                    <span className="tabular pt-0.5 font-mono text-xs text-accent font-bold">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="font-heading text-sm font-semibold text-text">{p.title}</h3>
+                      <p className="mt-1 text-xs leading-relaxed text-secondary">{p.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </Card>
           </motion.div>
         </div>
       </div>

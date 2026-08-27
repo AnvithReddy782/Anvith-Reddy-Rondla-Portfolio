@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { href: "#work", label: "Work" },
@@ -19,7 +20,7 @@ export default function Navigation() {
   const [active, setActive] = useState<string>("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -36,7 +37,7 @@ export default function Navigation() {
           if (entry.isIntersecting) setActive(`#${entry.target.id}`);
         }
       },
-      { rootMargin: "-35% 0px -55% 0px" }
+      { rootMargin: "-25% 0px -45% 0px" }
     );
 
     sections.forEach((s) => observer.observe(s));
@@ -47,21 +48,21 @@ export default function Navigation() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled || isOpen
-          ? "bg-bg/85 backdrop-blur-md border-b border-line"
+          ? "bg-bg/95 backdrop-blur-md border-b border-line shadow-xs"
           : "bg-transparent border-b border-transparent"
       }`}
     >
       <nav className="container-main" aria-label="Main navigation">
         <div className="flex items-center justify-between h-16">
           <a
-            href="#top"
+            href="/#top"
             className="font-heading text-[15px] font-semibold tracking-tight text-text"
           >
             Anvith Rondla
             <span className="text-accent">.</span>
           </a>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -79,23 +80,24 @@ export default function Navigation() {
                 />
               </a>
             ))}
-            <span className="hidden lg:flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-signal">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-signal opacity-60 motion-reduce:hidden" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-signal" />
-              </span>
+            <span className="hidden lg:flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.1em] text-signal">
+              <span className="h-1.5 w-1.5 rounded-full bg-signal" />
               Open to PM roles
             </span>
+            <ThemeToggle />
           </div>
 
-          <button
-            className="md:hidden p-2 -mr-2 text-text"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-          >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="p-2 text-text"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+            >
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
 
         <AnimatePresence>
@@ -105,7 +107,7 @@ export default function Navigation() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden border-t border-line bg-bg/95 backdrop-blur-md"
             >
               <div className="py-3 pb-6 flex flex-col">
                 {navLinks.map((link) => (
@@ -119,10 +121,12 @@ export default function Navigation() {
                     <span className="font-mono text-xs text-muted">{link.href}</span>
                   </a>
                 ))}
-                <span className="mt-4 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-signal">
-                  <span className="h-1.5 w-1.5 rounded-full bg-signal" />
-                  Open to PM roles
-                </span>
+                <div className="mt-4 flex items-center justify-between pt-2">
+                  <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-signal">
+                    <span className="h-1.5 w-1.5 rounded-full bg-signal" />
+                    Open to PM roles
+                  </span>
+                </div>
               </div>
             </motion.div>
           )}

@@ -2,96 +2,105 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import StatusBadge from "@/components/StatusBadge";
+import { Card } from "@/components/ui/card";
 
 const deployments = [
   {
     state: "Bihar",
-    system: "DPMUMS attendance portal",
-    scope: "38 districts · 150+ administrators",
+    system: "DPMUMS state attendance portal",
+    scope: "38 districts · 150+ administrators · 100% field adoption",
     status: "PRODUCTION",
   },
   {
     state: "Telangana",
-    system: "T-Fiber field tools",
-    scope: "38 districts · 100+ engineers",
+    system: "T-Fiber field dispatch & patrol logger",
+    scope: "Statewide fiber network · 100+ active field engineers",
     status: "PRODUCTION",
   },
   {
-    state: "State education dept.",
-    system: "APAAR analytics platform",
-    scope: "20M+ student records queryable",
+    state: "State Education",
+    system: "APAAR student analytics platform",
+    scope: "20M+ records · 75,000 schools · sub-2s natural language queries",
     status: "LIVE",
   },
 ];
 
 const stats = [
-  { value: "150+", label: "District admins and engineers served across systems" },
-  { value: "13", label: "Org-chart roles receiving automated custom reports" },
-  { value: "<15m", label: "Field reporting cycle time — down from 4 hours" },
-  { value: "₹0", label: "Total infrastructure spend across every deployment" },
+  { value: "150+", label: "District administrators & field engineers active weekly" },
+  { value: "38", label: "State districts managed with zero report forgery" },
+  { value: "<15m", label: "Field reporting cycle time (compressed from 4 hours)" },
+  { value: "100%", label: "Field compliance achieved within 3 weeks of rollout" },
 ];
 
 export default function Scale() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="scale" className="scroll-mt-20 border-t border-line py-24 md:py-32">
+    <section id="scale" className="scroll-mt-20 border-t border-line py-14 md:py-18">
       <div className="container-main">
+        {/* Section Header */}
         <motion.div
-          initial={reduce ? false : { opacity: 0, y: 24 }}
+          initial={reduce ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col justify-between gap-3 border-b border-line pb-5 md:flex-row md:items-end"
         >
-          <span className="label mb-6 block">At scale</span>
-          <h2 className="display-lg max-w-[22ch]">
-            State government runs on these systems.
-          </h2>
+          <div>
+            <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-accent mb-1.5 block">
+              Deployment Scale
+            </span>
+            <h2 className="display-lg">State Operations in Production</h2>
+          </div>
+          <p className="max-w-md text-xs sm:text-sm leading-relaxed text-secondary">
+            Verified deployments serving state administrative hierarchies with zero hardware capex.
+          </p>
         </motion.div>
 
-        {/* Deployment record */}
-        <div className="mt-14 border-t border-line">
+        {/* Deployment Record Table */}
+        <div className="mt-6 border-b border-line">
           {deployments.map((d, i) => (
             <motion.div
               key={d.system}
-              className="grid grid-cols-1 gap-x-8 gap-y-2 border-b border-line py-6 sm:grid-cols-[140px_1fr_auto] sm:items-center"
-              initial={reduce ? false : { opacity: 0, y: 16 }}
+              className="grid grid-cols-1 gap-x-6 gap-y-1.5 border-t border-line py-4 sm:grid-cols-[140px_1fr_auto] sm:items-center"
+              initial={reduce ? false : { opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.45, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="font-mono text-xs uppercase tracking-wider text-accent">
+              <span className="font-mono text-xs uppercase tracking-wider text-accent font-semibold">
                 {d.state}
               </span>
               <div>
-                <h3 className="font-heading text-base font-semibold text-text">{d.system}</h3>
-                <p className="tabular mt-0.5 font-mono text-xs text-muted">{d.scope}</p>
+                <h3 className="font-heading text-sm sm:text-base font-semibold text-text">{d.system}</h3>
+                <p className="tabular mt-0.5 font-mono text-[11px] text-muted">{d.scope}</p>
               </div>
-              <StatusBadge status={d.status} />
+              <div className="mt-1 sm:mt-0">
+                <StatusBadge status={d.status} />
+              </div>
             </motion.div>
           ))}
         </div>
 
-        <p className="mt-4 font-mono text-xs italic leading-relaxed text-muted">
-          * Dashboards for these deployments have been reviewed and approved by a state
-          project director.
+        <p className="mt-2.5 font-mono text-[11px] text-muted">
+          * Telemetry and deployment records reviewed and approved by state project directors.
         </p>
 
-        {/* Stats */}
-        <div className="mt-14 grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
+        {/* Integrated Stats Grid */}
+        <div className="mt-6 grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              className="bg-bg p-6"
-              initial={reduce ? false : { opacity: 0, y: 16 }}
+              className="bg-surface p-4 sm:p-5 shadow-2xs"
+              initial={reduce ? false : { opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.45, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="tabular block font-heading text-4xl font-semibold text-text md:text-[2.75rem]">
+              <span className="tabular block font-heading text-2xl font-semibold text-accent md:text-3xl">
                 {stat.value}
               </span>
-              <p className="mt-3 max-w-[26ch] text-sm leading-relaxed text-secondary">
+              <p className="mt-1.5 text-xs leading-relaxed text-secondary">
                 {stat.label}
               </p>
             </motion.div>

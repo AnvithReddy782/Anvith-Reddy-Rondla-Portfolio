@@ -3,9 +3,13 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/data";
 import StatusBadge from "@/components/StatusBadge";
-import CaseStudyPreview from "@/components/CaseStudyPreview";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { DpmumsMockup, AnnapurnaMockup, ApaarMockup, FieldReporterMockup } from "@/components/ProductMockups";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "next";
 
 export function generateStaticParams() {
@@ -21,7 +25,7 @@ export async function generateMetadata({
   const project = projects.find((p) => p.slug === slug);
   if (!project) return { title: "Not found" };
   return {
-    title: `${project.title} — Case study`,
+    title: `${project.title} - PRD Case Study`,
     description: project.description,
   };
 }
@@ -42,57 +46,148 @@ export default async function ProjectPage({
   return (
     <>
       <Navigation />
-      <main className="min-h-[100dvh]">
-        <article className="container-main py-14 md:py-20">
-          <Link
-            href="/#work"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.1em] text-muted transition-colors hover:text-accent"
-          >
-            <ArrowLeft size={13} />
-            All work
-          </Link>
+      <main className="min-h-[100dvh] pt-20 pb-16">
+        <article className="container-main max-w-4xl py-6 md:py-10">
+          {/* Back button */}
+          <Button asChild variant="ghost" size="sm" className="mb-4 -ml-2 text-muted hover:text-text">
+            <Link href="/#work">
+              <ArrowLeft size={13} className="mr-1" />
+              Back to selected work
+            </Link>
+          </Button>
 
-          <header className="mt-10 border-b border-line pb-12">
-            <div className="flex items-center gap-4">
-              <span className="tabular font-mono text-xs text-faint">{project.id}</span>
+          {/* Header */}
+          <header className="border-b border-line pb-8">
+            <div className="flex flex-wrap items-center gap-2.5">
+              <Badge variant="accent">PRD Case Study / {project.id}</Badge>
               <StatusBadge status={project.status} />
-              <span className="label">{project.soloBuild ? "Solo build" : "Collaborative"}</span>
+              <span className="font-mono text-xs text-muted">/ {project.category}</span>
             </div>
-            <h1 className="display-xl mt-6 max-w-[16ch]">{project.title}</h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-secondary md:text-lg">
+
+            <h1 className="display-xl mt-4 max-w-[20ch]">{project.title}</h1>
+            <p className="mt-3 max-w-2xl text-sm sm:text-base leading-relaxed text-secondary">
               {project.description}
             </p>
+
+            <div className="mt-6 grid grid-cols-2 gap-3 border-t border-line pt-5 sm:grid-cols-4 font-mono text-xs">
+              {project.result.map((r) => (
+                <div key={r.label} className="border border-line/60 bg-sunk/60 p-3">
+                  <span className="block text-[10px] uppercase text-muted">{r.label}</span>
+                  <span className="mt-0.5 block font-heading text-lg font-semibold text-accent md:text-xl">
+                    {r.value}
+                  </span>
+                </div>
+              ))}
+            </div>
           </header>
 
-          <section className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
-            <div>
-              <span className="label mb-3 block">Context</span>
-              <p className="text-[15px] leading-relaxed text-secondary">{project.context}</p>
+          {/* Context & Role Section */}
+          <section className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <Card className="p-5">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-muted mb-2 block">
+                Field Environment & Context
+              </span>
+              <p className="text-xs sm:text-sm leading-relaxed text-secondary">{project.context}</p>
+            </Card>
+            <Card className="p-5">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-muted mb-2 block">
+                My Role & Ownership
+              </span>
+              <p className="text-xs sm:text-sm leading-relaxed text-secondary">{project.role}</p>
+            </Card>
+          </section>
+
+          {/* High-Fidelity UI Mockup Showcase */}
+          <section className="mt-10">
+            <div className="mb-2.5 flex items-center justify-between">
+              <span className="font-mono text-xs uppercase tracking-wider text-muted">Production Interface Preview</span>
+              <Badge variant="signal">Interactive Spec</Badge>
             </div>
-            <div>
-              <span className="label mb-3 block">My role</span>
-              <p className="text-[15px] leading-relaxed text-secondary">{project.role}</p>
+
+            <div className="border border-line bg-surface p-2 sm:p-3 shadow-xs">
+              {project.slug === "dpmums" && <DpmumsMockup />}
+              {project.slug === "annapurna-collections" && <AnnapurnaMockup />}
+              {project.slug === "apaar-analytics" && <ApaarMockup />}
+              {project.slug === "field-reporter" && <FieldReporterMockup />}
+              {project.slug !== "dpmums" &&
+                project.slug !== "annapurna-collections" &&
+                project.slug !== "apaar-analytics" &&
+                project.slug !== "field-reporter" && (
+                  <div className="border border-line bg-sunk p-8 text-center">
+                    <span className="font-mono text-xs text-muted">System Benchmark</span>
+                    <h3 className="mt-2 font-heading text-2xl font-semibold text-text">{project.metric}</h3>
+                    <p className="mt-2 text-xs text-secondary">{project.preview.label}</p>
+                  </div>
+                )}
             </div>
           </section>
 
-          <CaseStudyPreview kind={project.preview.kind} label={project.preview.label} />
+          {/* The PM Narrative: Discovery, Constraints, Decisions */}
+          <section className="mt-12 space-y-6">
+            {/* 01. The Problem */}
+            <Card className="p-6 border-l-4 border-l-accent">
+              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-accent">
+                01. Operational Discovery & Field Pain
+              </span>
+              <h2 className="mt-1 font-heading text-xl font-semibold text-text">
+                What was broken before this system existed?
+              </h2>
+              <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-secondary">
+                {project.problem}
+              </p>
+            </Card>
 
-          <section className="mt-14">
-            <span className="label mb-6 block">The decision trail</span>
-            <ol className="space-y-9 border-l border-line pl-7">
+            {/* 02. The Constraints */}
+            <Card className="p-6 border-l-4 border-l-text">
+              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-text">
+                02. Constraints & Key Product Decisions
+              </span>
+              <h2 className="mt-1 font-heading text-xl font-semibold text-text">
+                Why we chose this architecture over alternatives
+              </h2>
+              <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-secondary">
+                {project.decision}
+              </p>
+              {project.keyTakeaway && (
+                <div className="mt-3.5 border border-line bg-sunk p-3 font-mono text-xs text-secondary">
+                  <span className="font-semibold text-accent">Key Decision Insight:</span> {project.keyTakeaway}
+                </div>
+              )}
+            </Card>
+
+            {/* 03. The Outcome */}
+            <Card className="p-6 border-l-4 border-l-signal">
+              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-signal">
+                03. Measurable Impact
+              </span>
+              <h2 className="mt-1 font-heading text-xl font-semibold text-text">
+                Field adoption & verified results
+              </h2>
+              <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-secondary">
+                {project.outcome}
+              </p>
+            </Card>
+          </section>
+
+          {/* Chronological Decision Trail */}
+          <section className="mt-14 border-t border-line pt-10">
+            <span className="font-mono text-xs uppercase tracking-wider text-accent font-semibold mb-6 block">
+              Chronological Roadmap & Execution
+            </span>
+            <ol className="space-y-8 border-l border-line pl-7">
               {project.timeline.map((step, i) => (
                 <li key={i} className="relative">
                   <span
                     aria-hidden="true"
-                    className="tabular absolute -left-[47px] top-0.5 flex h-6 w-6 items-center justify-center border border-accent bg-bg font-mono text-[10px] font-medium text-accent"
+                    className="tabular absolute -left-[45px] top-0.5 flex h-6 w-6 items-center justify-center border border-accent bg-bg font-mono text-[10px] font-medium text-accent"
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                    <h2 className="font-heading text-lg font-semibold text-text">{step.title}</h2>
-                    <span className="font-mono text-xs text-faint">{step.period}</span>
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <h3 className="font-heading text-base sm:text-lg font-semibold text-text">{step.title}</h3>
+                    <span className="font-mono text-xs text-accent">{step.period}</span>
                   </div>
-                  <p className="mt-2 max-w-[62ch] text-[15px] leading-relaxed text-secondary">
+                  <p className="mt-1.5 max-w-[64ch] text-xs sm:text-sm leading-relaxed text-secondary">
                     {step.body}
                   </p>
                 </li>
@@ -100,23 +195,11 @@ export default async function ProjectPage({
             </ol>
           </section>
 
-          <section className="mt-14 grid grid-cols-1 gap-x-8 gap-y-6 border-t border-line pt-10 sm:grid-cols-3">
-            <div>
-              <span className="label mb-2 block">Problem</span>
-              <p className="text-sm leading-relaxed text-secondary">{project.problem}</p>
-            </div>
-            <div>
-              <span className="label mb-2 block">Decision</span>
-              <p className="text-sm leading-relaxed text-secondary">{project.decision}</p>
-            </div>
-            <div>
-              <span className="label mb-2 block text-signal">Outcome</span>
-              <p className="text-sm leading-relaxed text-secondary">{project.outcome}</p>
-            </div>
-          </section>
-
-          <section className="mt-12">
-            <span className="label mb-3 block">Stack</span>
+          {/* Tech Stack */}
+          <section className="mt-12 border-t border-line pt-8">
+            <span className="font-mono text-xs uppercase tracking-wider text-muted mb-2.5 block">
+              Technologies & Infrastructure
+            </span>
             <div className="flex flex-wrap gap-1.5">
               {project.stack.map((tech) => (
                 <span key={tech} className="chip">{tech}</span>
@@ -124,43 +207,48 @@ export default async function ProjectPage({
             </div>
           </section>
 
-          {/* Prev / Next */}
+          {/* Prev / Next Navigation */}
           <nav
             aria-label="More case studies"
-            className="mt-16 grid grid-cols-1 border-t border-line sm:grid-cols-2"
+            className="mt-14 grid grid-cols-1 border-t border-line sm:grid-cols-2"
           >
             <Link
               href={`/projects/${prev.slug}`}
-              className="group flex flex-col gap-1 border-b border-line py-6 pr-6 transition-colors hover:bg-surface sm:border-b-0 sm:border-r"
+              className="group flex flex-col gap-1 border-b border-line py-5 pr-5 transition-colors hover:bg-surface sm:border-b-0 sm:border-r"
             >
-              <span className="flex items-center gap-2 font-mono text-xs text-muted">
-                <ArrowLeft size={13} /> Previous
+              <span className="flex items-center gap-1.5 font-mono text-xs text-muted">
+                <ArrowLeft size={13} /> Previous System
               </span>
-              <span className="font-heading text-lg font-semibold text-text group-hover:text-accent">
+              <span className="font-heading text-base font-semibold text-text group-hover:text-accent">
                 {prev.title}
               </span>
+              <span className="text-xs text-muted">{prev.category}</span>
             </Link>
             <Link
               href={`/projects/${next.slug}`}
-              className="group flex flex-col items-start gap-1 py-6 pl-6 text-left transition-colors hover:bg-surface sm:items-end"
+              className="group flex flex-col items-start gap-1 py-5 pl-5 text-left transition-colors hover:bg-surface sm:items-end"
             >
-              <span className="flex items-center gap-2 font-mono text-xs text-muted">
-                Next <ArrowRight size={13} />
+              <span className="flex items-center gap-1.5 font-mono text-xs text-muted">
+                Next System <ArrowRight size={13} />
               </span>
-              <span className="font-heading text-lg font-semibold text-text group-hover:text-accent">
+              <span className="font-heading text-base font-semibold text-text group-hover:text-accent">
                 {next.title}
               </span>
+              <span className="text-xs text-muted">{next.category}</span>
             </Link>
           </nav>
 
-          <footer className="mt-4 flex flex-col items-start justify-between gap-4 border-t border-line pt-8 sm:flex-row sm:items-center">
-            <p className="text-sm text-muted">Need a system like this?</p>
-            <Link
-              href="/#contact"
-              className="btn-primary px-5 py-2.5 text-xs"
-            >
-              Get in touch <ArrowUpRight size={14} />
-            </Link>
+          {/* Footer Contact CTA */}
+          <footer className="mt-4 flex flex-col items-start justify-between gap-4 border-t border-line pt-6 sm:flex-row sm:items-center">
+            <div>
+              <h4 className="font-heading text-base font-semibold text-text">Looking for a systems-minded PM?</h4>
+              <p className="text-xs text-muted mt-0.5">Let&apos;s discuss product strategy, field operations, and database architecture.</p>
+            </div>
+            <Button asChild variant="default" size="default">
+              <Link href="/#contact">
+                Get in touch <ArrowUpRight size={14} />
+              </Link>
+            </Button>
           </footer>
         </article>
       </main>

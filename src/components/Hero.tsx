@@ -1,8 +1,12 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Radio, Database, CheckCircle2, ShieldCheck, MapPin } from "lucide-react";
 import { personalInfo } from "@/lib/data";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -10,93 +14,162 @@ export default function Hero() {
   const reduce = useReducedMotion();
 
   const rise = (delay: number) => ({
-    initial: reduce ? false : { opacity: 0, y: 28 },
+    initial: reduce ? false : { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.7, delay, ease },
+    transition: { duration: 0.6, delay, ease },
   });
 
   return (
-    <section id="top" className="hero-height relative flex flex-col justify-end">
-      <div className="container-main flex w-full flex-col justify-between gap-14 pb-10 pt-32 md:gap-20 md:pb-14">
-        <div>
-          <motion.p {...rise(0)} className="label mb-7">
-            Anvith Reddy Rondla — Junior Product Manager
-          </motion.p>
+    <section id="top" className="relative flex items-center pt-28 pb-12 md:pt-36 md:pb-16">
+      <div className="container-main w-full">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 items-start">
+          {/* Left Column: Heading & Value Proposition */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            <motion.div {...rise(0)} className="mb-2.5">
+              <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
+                Anvith Reddy Rondla / Junior Product Manager
+              </span>
+            </motion.div>
 
-          <h1 className="font-heading text-[clamp(2.5rem,4.6vw,4.25rem)] font-semibold uppercase leading-[1.02] tracking-[-0.02em] text-text">
-            <span className="block overflow-hidden">
-              <motion.span
-                className="block"
-                initial={reduce ? false : { y: "108%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.85, delay: 0.08, ease }}
-              >
-                Systems that survive
-              </motion.span>
-            </span>
-            <span className="block overflow-hidden">
-              <motion.span
-                className="block"
-                initial={reduce ? false : { y: "108%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.85, delay: 0.18, ease }}
-              >
-                bad networks<span className="text-accent">.</span>
-              </motion.span>
-            </span>
-          </h1>
+            <h1 className="font-heading text-[clamp(2.2rem,4vw,3.7rem)] font-semibold uppercase leading-[1.04] tracking-[-0.02em] text-text">
+              <span className="block overflow-hidden">
+                <motion.span
+                  className="block"
+                  initial={reduce ? false : { y: "108%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.85, delay: 0.08, ease }}
+                >
+                  Systems that survive
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden">
+                <motion.span
+                  className="block"
+                  initial={reduce ? false : { y: "108%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.85, delay: 0.18, ease }}
+                >
+                  bad networks<span className="text-accent">.</span>
+                </motion.span>
+              </span>
+            </h1>
 
-          <motion.p {...rise(0.35)} className="mt-7 max-w-[54ch] text-base leading-relaxed text-secondary md:text-lg">
-            Data analyst turned PM in 14 months. I design and ship offline&#8209;first field
-            systems for two Indian state governments — documented before a single line
-            of code.
-          </motion.p>
+            <motion.p {...rise(0.32)} className="mt-4 max-w-[54ch] text-sm sm:text-base leading-relaxed text-secondary">
+              Data analyst promoted to PM in 14 months. I discover field operational bottlenecks,
+              author PRD specifications, and ship production software for Indian state
+              governments.
+            </motion.p>
 
-          <motion.div {...rise(0.45)} className="mt-9 flex flex-wrap items-center gap-3">
-            <a href="#work" className="btn-primary group">
-              View selected work
-              <ArrowDown size={14} className="transition-transform duration-300 group-hover:translate-y-0.5" />
-            </a>
-            <a href={`mailto:${personalInfo.email}`} className="btn-secondary">
-              Email me
-            </a>
-          </motion.div>
-        </div>
+            <motion.div {...rise(0.42)} className="mt-6 flex flex-wrap items-center gap-3">
+              <Button asChild variant="default" size="default">
+                <a href="#work" className="group">
+                  View selected work
+                  <ArrowDown size={14} className="transition-transform duration-300 group-hover:translate-y-0.5" />
+                </a>
+              </Button>
+              <Button asChild variant="secondary" size="default">
+                <a href={`mailto:${personalInfo.email}`}>
+                  Email me
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="default">
+                <a href="/resume.pdf" download>
+                  Resume <ArrowUpRight size={14} />
+                </a>
+              </Button>
+            </motion.div>
 
-        <motion.div
-          initial={reduce ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.65 }}
-        >
-          <div className="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6 font-mono text-xs lg:grid-cols-4">
-            <div>
-              <span className="block text-faint">Building now</span>
-              <span className="mt-1 block font-medium text-signal">DPMUMS v1.0 — testing</span>
-            </div>
-            <div>
-              <span className="block text-faint">Last shipped</span>
-              <span className="mt-1 block font-medium text-secondary">Reports Auto — production</span>
-            </div>
-            <div>
-              <span className="block text-faint">Base</span>
-              <span className="mt-1 block font-medium text-secondary">{personalInfo.location}</span>
-            </div>
-            <div>
-              <span className="block text-faint">Status</span>
-              <span className="mt-1 block font-medium text-accent">Open to PM opportunities</span>
-            </div>
+            <motion.div {...rise(0.52)} className="mt-6 border-t border-line pt-4">
+              <p className="tabular font-mono text-xs tracking-wide text-muted">
+                <span className="font-semibold text-accent">10</span> products shipped
+                <span className="mx-2 text-faint">/</span>
+                <span className="font-semibold text-accent">2</span> state contracts
+                <span className="mx-2 text-faint">/</span>
+                <span className="font-semibold text-accent">150+</span> admins served
+                <span className="mx-2 text-faint">/</span>
+                <span className="font-semibold text-accent">20M+</span> records queryable
+              </p>
+            </motion.div>
           </div>
 
-          <p className="tabular mt-6 max-w-none font-mono text-[13px] tracking-wide text-muted">
-            <span className="text-accent">10</span> products shipped
-            <span className="mx-2 text-faint">/</span>
-            <span className="text-accent">2</span> states in production
-            <span className="mx-2 text-faint">/</span>
-            <span className="text-accent">150+</span> admins served
-            <span className="mx-2 text-faint">/</span>
-            ₹<span className="text-accent">0</span> infra spend
-          </p>
-        </motion.div>
+          {/* Right Column: Executive PM Production Summary */}
+          <motion.div
+            className="lg:col-span-5"
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.35, ease }}
+          >
+            <Card className="shadow-2xs">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 border-b border-line">
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-signal" />
+                  <CardTitle className="text-xs font-mono font-semibold uppercase tracking-wider text-text">
+                    Executive PM Summary
+                  </CardTitle>
+                </div>
+                <Badge variant="signal">Live In Production</Badge>
+              </CardHeader>
+
+              <CardContent className="pt-3.5 space-y-3">
+                {/* State Deployments Record */}
+                <div className="space-y-2.5 divide-y divide-line/60">
+                  <div className="pt-0.5 first:pt-0">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-heading font-semibold text-text">DPMUMS Attendance Platform</span>
+                      <span className="font-mono text-[10px] text-accent font-medium">Bihar State</span>
+                    </div>
+                    <div className="mt-0.5 flex items-center justify-between font-mono text-[10px] text-muted">
+                      <span>38 districts · 150+ admins</span>
+                      <span className="text-signal flex items-center gap-1 font-medium">
+                        <CheckCircle2 size={10} /> 100% field adoption
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2.5">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-heading font-semibold text-text">T-Fiber Field Dispatch PWA</span>
+                      <span className="font-mono text-[10px] text-accent font-medium">Telangana State</span>
+                    </div>
+                    <div className="mt-0.5 flex items-center justify-between font-mono text-[10px] text-muted">
+                      <span>100+ active field engineers</span>
+                      <span className="text-signal flex items-center gap-1 font-medium">
+                        <Radio size={10} /> Offline IndexedDB sync
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2.5">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-heading font-semibold text-text">APAAR Education Analytics</span>
+                      <span className="font-mono text-[10px] text-accent font-medium">State Education</span>
+                    </div>
+                    <div className="mt-0.5 flex items-center justify-between font-mono text-[10px] text-muted">
+                      <span>20M+ student records indexed</span>
+                      <span className="text-signal flex items-center gap-1 font-medium">
+                        <Database size={10} /> &lt; 2s SQL RAG
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <Separator />
+
+                {/* Status Footer */}
+                <div className="border border-line/80 bg-sunk/60 p-2.5 font-mono text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-muted text-[11px]">Availability:</span>
+                    <span className="font-semibold text-accent text-[11px]">Open to PM Roles</span>
+                  </div>
+                  <div className="mt-0.5 text-[10px] text-secondary flex items-center gap-1">
+                    <MapPin size={10} className="text-accent shrink-0" />
+                    Base: {personalInfo.location} · Remote / Relocation
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

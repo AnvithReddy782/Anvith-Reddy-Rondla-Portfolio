@@ -19,17 +19,17 @@ export default function Footer() {
   useMotionValueEvent(scrollY, "change", (v) => setShowTop(v > 700));
 
   return (
-    <footer className="border-t border-line py-12">
+    <footer className="border-t border-line py-8 md:py-10">
       <div className="container-main">
-        <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-3">
           <div>
             <span className="font-heading text-sm font-semibold tracking-tight text-text">
               Anvith Reddy Rondla
             </span>
-            <p className="mt-1.5 font-mono text-xs text-muted">{personalInfo.location}</p>
+            <p className="mt-1 font-mono text-xs text-muted">{personalInfo.location}</p>
           </div>
 
-          <nav className="flex flex-wrap gap-x-6 gap-y-2 md:justify-center" aria-label="Footer">
+          <nav className="flex flex-wrap gap-x-5 gap-y-1.5 md:justify-center" aria-label="Footer">
             {links.map((link) => (
               <a
                 key={link.href}
@@ -41,7 +41,7 @@ export default function Footer() {
             ))}
           </nav>
 
-          <div className="flex gap-6 md:justify-end">
+          <div className="flex gap-5 md:justify-end">
             {[
               { label: "LinkedIn", href: personalInfo.linkedin },
               { label: "GitHub", href: personalInfo.github },
@@ -61,11 +61,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-line pt-6 sm:flex-row sm:items-center">
-          <span className="font-mono text-xs leading-relaxed text-faint">
+        <div className="mt-6 flex flex-col items-start justify-between gap-2.5 border-t border-line pt-4 sm:flex-row sm:items-center">
+          <span className="font-mono text-[11px] leading-relaxed text-faint">
             Built alone · Documented before building · Running in production
           </span>
-          <span className="font-mono text-xs text-faint">
+          <span className="font-mono text-[11px] text-faint">
             &copy; {new Date().getFullYear()} Anvith Reddy Rondla
           </span>
         </div>
@@ -77,12 +77,12 @@ export default function Footer() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 16 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center border border-line-strong bg-surface text-text transition-colors hover:border-text"
+            className="fixed bottom-5 right-5 z-50 flex h-9 w-9 items-center justify-center border border-line-strong bg-surface text-text transition-colors hover:border-text shadow-2xs"
             aria-label="Scroll to top"
           >
-            <ArrowUp size={15} />
+            <ArrowUp size={14} />
           </motion.button>
         )}
       </AnimatePresence>
