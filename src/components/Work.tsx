@@ -130,12 +130,13 @@ export default function Work() {
                   </div>
                 ) : (
                   /* Tier 2 & 4: Compact High-Density Grid */
-                  <div className="grid grid-cols-1 gap-px bg-line md:grid-cols-2">
+                  <div className={`grid grid-cols-1 gap-px bg-line ${tierProjects.length > 1 ? "md:grid-cols-2" : ""}`}>
                     {tierProjects.map((project, index) => (
                       <CompactProjectCard
                         key={project.slug}
                         project={project}
                         delay={index * 0.05}
+                        isSingle={tierProjects.length === 1}
                         onClick={() => setSelected(project)}
                       />
                     ))}
@@ -455,10 +456,12 @@ function CompactProjectCard({
   project,
   delay,
   onClick,
+  isSingle = false,
 }: {
   project: Project;
   delay: number;
   onClick: () => void;
+  isSingle?: boolean;
 }) {
   const reduce = useReducedMotion();
 
@@ -470,7 +473,9 @@ function CompactProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.05 }}
       transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative flex cursor-pointer flex-col bg-surface p-5 text-left transition-colors duration-200 hover:bg-raised/40 md:p-6"
+      className={`group relative flex cursor-pointer flex-col bg-surface p-5 text-left transition-colors duration-200 hover:bg-raised/40 md:p-6 ${
+        isSingle ? "w-full" : ""
+      }`}
       aria-label={`Open details for ${project.title}`}
     >
       <div className="mb-2.5 flex items-center justify-between gap-3">
