@@ -40,9 +40,9 @@ export default function Scale() {
       <div className="container-main">
         {/* Section Header */}
         <motion.div
-          initial={reduce ? false : { opacity: 0, y: 14 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col justify-between gap-3 border-b border-line pb-5 md:flex-row md:items-end"
         >
@@ -63,9 +63,9 @@ export default function Scale() {
             <motion.div
               key={d.system}
               className="grid grid-cols-1 gap-x-6 gap-y-1.5 border-t border-line py-4 sm:grid-cols-[140px_1fr_auto] sm:items-center"
-              initial={reduce ? false : { opacity: 0, y: 12 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.05 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
               <span className="font-mono text-xs uppercase tracking-wider text-accent font-semibold">
@@ -92,9 +92,9 @@ export default function Scale() {
             <motion.div
               key={stat.label}
               className="bg-surface p-4 sm:p-5 shadow-2xs"
-              initial={reduce ? false : { opacity: 0, y: 12 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.05 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
               <span className="tabular block font-heading text-2xl font-semibold text-accent md:text-3xl">

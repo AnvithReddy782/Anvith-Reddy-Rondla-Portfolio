@@ -317,7 +317,7 @@ function FlagshipCard({
 
   return (
     <motion.div
-      initial={reduce ? false : { opacity: 0, y: 16 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
@@ -395,7 +395,7 @@ function StandardProjectCard({
 
   return (
     <motion.div
-      initial={reduce ? false : { opacity: 0, y: 16 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}
@@ -469,7 +469,7 @@ function CompactProjectCard({
     <motion.button
       type="button"
       onClick={onClick}
-      initial={reduce ? false : { opacity: 0, y: 14 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}

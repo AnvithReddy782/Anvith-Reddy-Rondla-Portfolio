@@ -24,9 +24,9 @@ export default function Contact() {
     <section id="contact" className="scroll-mt-20 border-t border-line py-14 md:py-18">
       <div className="container-main">
         <motion.div
-          initial={reduce ? false : { opacity: 0, y: 14 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-accent mb-1.5 block">

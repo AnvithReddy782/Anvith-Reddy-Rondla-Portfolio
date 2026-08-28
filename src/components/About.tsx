@@ -39,9 +39,9 @@ export default function About() {
         {/* Left Column: Trajectory Story */}
         <motion.div
           className="lg:col-span-7"
-          initial={reduce ? false : { opacity: 0, y: 14 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-accent mb-1.5 block">
@@ -79,9 +79,9 @@ export default function About() {
         {/* Right Column: Operating Principles Card */}
         <div className="lg:col-span-5">
           <motion.div
-            initial={reduce ? false : { opacity: 0, y: 14 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.05 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           >
             <Card className="p-5 sm:p-6 shadow-2xs">
