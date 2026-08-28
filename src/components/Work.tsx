@@ -66,10 +66,10 @@ export default function Work() {
         {/* Section Header */}
         <motion.div
           className="mb-8 flex flex-col justify-between gap-3 border-b border-line pb-5 md:flex-row md:items-end"
-          initial={reduce ? false : { opacity: 0, y: 20 }}
+          initial={reduce ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
         >
           <div>
             <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-accent mb-1.5 block">
@@ -316,10 +316,10 @@ function FlagshipCard({
 
   return (
     <motion.div
-      initial={reduce ? false : { opacity: 0, y: 20 }}
+      initial={reduce ? false : { opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
     >
       <Card className="group relative border-line p-5 md:p-6 transition-all duration-300 hover:border-line-strong hover:shadow-xs bg-surface/90">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-center">
@@ -394,10 +394,10 @@ function StandardProjectCard({
 
   return (
     <motion.div
-      initial={reduce ? false : { opacity: 0, y: 20 }}
+      initial={reduce ? false : { opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.55, delay, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}
       className="h-full"
     >
       <Card className="group flex flex-col justify-between h-full p-5 transition-all duration-300 hover:border-line-strong hover:shadow-xs bg-surface/90">
@@ -466,10 +466,10 @@ function CompactProjectCard({
     <motion.button
       type="button"
       onClick={onClick}
-      initial={reduce ? false : { opacity: 0, y: 16 }}
+      initial={reduce ? false : { opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}
       className="group relative flex cursor-pointer flex-col bg-surface p-5 text-left transition-colors duration-200 hover:bg-raised/40 md:p-6"
       aria-label={`Open details for ${project.title}`}
     >

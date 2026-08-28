@@ -72,10 +72,10 @@ export default function Path() {
         {/* Section Header */}
         <motion.div
           className="flex flex-col justify-between gap-3 border-b border-line pb-5 md:flex-row md:items-end"
-          initial={reduce ? false : { opacity: 0, y: 20 }}
+          initial={reduce ? false : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
         >
           <div>
             <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-accent mb-1.5 block">
@@ -95,9 +95,9 @@ export default function Path() {
             return (
               <motion.div
                 key={st.step}
-                initial={reduce ? false : { opacity: 0, y: 16 }}
+                initial={reduce ? false : { opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: true, amount: 0.05 }}
                 transition={{ duration: 0.45, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Card

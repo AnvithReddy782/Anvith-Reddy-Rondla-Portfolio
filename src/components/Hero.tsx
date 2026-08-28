@@ -14,9 +14,9 @@ export default function Hero() {
   const reduce = useReducedMotion();
 
   const rise = (delay: number) => ({
-    initial: reduce ? false : { opacity: 0, y: 20 },
+    initial: reduce ? false : { opacity: 0, y: 14 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, delay, ease },
+    transition: { duration: 0.5, delay, ease },
   });
 
   return (
