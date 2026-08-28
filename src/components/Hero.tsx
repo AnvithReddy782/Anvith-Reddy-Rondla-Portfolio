@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Radio, Database, CheckCircle2, ShieldCheck, MapPin } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Radio, Database, CheckCircle2, ShieldCheck, MapPin, Sparkles } from "lucide-react";
 import { personalInfo } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -23,7 +23,7 @@ export default function Hero() {
     <section id="top" className="relative flex items-center pt-28 pb-12 md:pt-36 md:pb-16">
       <div className="container-main w-full">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 items-start">
-          {/* Left Column: Heading & Value Proposition */}
+          {/* Left Column: Manifesto & Value Proposition */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             <motion.div {...rise(0)} className="mb-2.5">
               <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
@@ -61,20 +61,25 @@ export default function Hero() {
             </motion.p>
 
             <motion.div {...rise(0.42)} className="mt-6 flex flex-wrap items-center gap-3">
-              <Button asChild variant="default" size="default">
-                <a href="#work" className="group">
-                  View selected work
-                  <ArrowDown size={14} className="transition-transform duration-300 group-hover:translate-y-0.5" />
+              <Button asChild variant="default" size="default" className="group rounded-full pl-5 pr-3">
+                <a href="#work" className="flex items-center gap-2">
+                  <span>View selected work</span>
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-black/10 dark:bg-white/20 transition-transform duration-300 group-hover:translate-y-0.5">
+                    <ArrowDown size={12} />
+                  </span>
                 </a>
               </Button>
-              <Button asChild variant="secondary" size="default">
+              <Button asChild variant="secondary" size="default" className="rounded-full px-5">
                 <a href={`mailto:${personalInfo.email}`}>
                   Email me
                 </a>
               </Button>
-              <Button asChild variant="outline" size="default">
-                <a href="/resume.pdf" download>
-                  Resume <ArrowUpRight size={14} />
+              <Button asChild variant="outline" size="default" className="group rounded-full pl-4 pr-2.5">
+                <a href="/resume.pdf" download className="flex items-center gap-2">
+                  <span>Resume</span>
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-sunk text-muted transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent">
+                    <ArrowUpRight size={11} />
+                  </span>
                 </a>
               </Button>
             </motion.div>
@@ -99,10 +104,10 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.35, ease }}
           >
-            <Card className="shadow-2xs">
+            <Card className="shadow-2xs border-line bg-surface/90 backdrop-blur-xs">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 border-b border-line">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-signal" />
+                  <span className="h-2 w-2 rounded-full bg-signal animate-pulse" />
                   <CardTitle className="text-xs font-mono font-semibold uppercase tracking-wider text-text">
                     Executive PM Summary
                   </CardTitle>

@@ -137,7 +137,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <meta name="theme-color" content="#fbf9f5" />
       </head>
-      <body className="grain min-h-screen antialiased">
+      <body className="min-h-screen antialiased">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[var(--color-accent)] focus:text-[var(--color-accent-contrast)] focus:text-sm focus:font-medium"

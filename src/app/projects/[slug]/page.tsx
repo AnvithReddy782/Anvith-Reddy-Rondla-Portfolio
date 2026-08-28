@@ -49,9 +49,9 @@ export default async function ProjectPage({
       <main className="min-h-[100dvh] pt-20 pb-16">
         <article className="container-main max-w-4xl py-6 md:py-10">
           {/* Back button */}
-          <Button asChild variant="ghost" size="sm" className="mb-4 -ml-2 text-muted hover:text-text">
+          <Button asChild variant="ghost" size="sm" className="mb-4 -ml-2 text-muted hover:text-text rounded-full px-3">
             <Link href="/#work">
-              <ArrowLeft size={13} className="mr-1" />
+              <ArrowLeft size={13} className="mr-1.5" />
               Back to selected work
             </Link>
           </Button>
@@ -71,7 +71,7 @@ export default async function ProjectPage({
 
             <div className="mt-6 grid grid-cols-2 gap-3 border-t border-line pt-5 sm:grid-cols-4 font-mono text-xs">
               {project.result.map((r) => (
-                <div key={r.label} className="border border-line/60 bg-sunk/60 p-3">
+                <div key={r.label} className="border border-line/60 bg-sunk/60 p-3 shadow-2xs">
                   <span className="block text-[10px] uppercase text-muted">{r.label}</span>
                   <span className="mt-0.5 block font-heading text-lg font-semibold text-accent md:text-xl">
                     {r.value}
@@ -83,13 +83,13 @@ export default async function ProjectPage({
 
           {/* Context & Role Section */}
           <section className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Card className="p-5">
+            <Card className="p-5 shadow-2xs bg-surface/90">
               <span className="font-mono text-[10px] uppercase tracking-wider text-muted mb-2 block">
                 Field Environment & Context
               </span>
               <p className="text-xs sm:text-sm leading-relaxed text-secondary">{project.context}</p>
             </Card>
-            <Card className="p-5">
+            <Card className="p-5 shadow-2xs bg-surface/90">
               <span className="font-mono text-[10px] uppercase tracking-wider text-muted mb-2 block">
                 My Role & Ownership
               </span>
@@ -104,7 +104,7 @@ export default async function ProjectPage({
               <Badge variant="signal">Interactive Spec</Badge>
             </div>
 
-            <div className="border border-line bg-surface p-2 sm:p-3 shadow-xs">
+            <div className="border border-line bg-surface p-2 sm:p-3 shadow-2xs">
               {project.slug === "dpmums" && <DpmumsMockup />}
               {project.slug === "annapurna-collections" && <AnnapurnaMockup />}
               {project.slug === "apaar-analytics" && <ApaarMockup />}
@@ -125,7 +125,7 @@ export default async function ProjectPage({
           {/* The PM Narrative: Discovery, Constraints, Decisions */}
           <section className="mt-12 space-y-6">
             {/* 01. The Problem */}
-            <Card className="p-6 border-l-4 border-l-accent">
+            <Card className="p-6 border-l-4 border-l-accent shadow-2xs bg-surface/90">
               <span className="font-mono text-xs font-semibold uppercase tracking-wider text-accent">
                 01. Operational Discovery & Field Pain
               </span>
@@ -138,7 +138,7 @@ export default async function ProjectPage({
             </Card>
 
             {/* 02. The Constraints */}
-            <Card className="p-6 border-l-4 border-l-text">
+            <Card className="p-6 border-l-4 border-l-text shadow-2xs bg-surface/90">
               <span className="font-mono text-xs font-semibold uppercase tracking-wider text-text">
                 02. Constraints & Key Product Decisions
               </span>
@@ -156,7 +156,7 @@ export default async function ProjectPage({
             </Card>
 
             {/* 03. The Outcome */}
-            <Card className="p-6 border-l-4 border-l-signal">
+            <Card className="p-6 border-l-4 border-l-signal shadow-2xs bg-surface/90">
               <span className="font-mono text-xs font-semibold uppercase tracking-wider text-signal">
                 03. Measurable Impact
               </span>
@@ -244,9 +244,12 @@ export default async function ProjectPage({
               <h4 className="font-heading text-base font-semibold text-text">Looking for a systems-minded PM?</h4>
               <p className="text-xs text-muted mt-0.5">Let&apos;s discuss product strategy, field operations, and database architecture.</p>
             </div>
-            <Button asChild variant="default" size="default">
-              <Link href="/#contact">
-                Get in touch <ArrowUpRight size={14} />
+            <Button asChild variant="default" size="default" className="group rounded-full pl-5 pr-3">
+              <Link href="/#contact" className="flex items-center gap-2">
+                <span>Get in touch</span>
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-black/10 dark:bg-white/20 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+                  <ArrowUpRight size={12} />
+                </span>
               </Link>
             </Button>
           </footer>

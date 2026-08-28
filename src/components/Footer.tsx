@@ -8,15 +8,34 @@ import { personalInfo } from "@/lib/data";
 const links = [
   { label: "Work", href: "#work" },
   { label: "Scale", href: "#scale" },
-  { label: "Path", href: "#path" },
+  { label: "Evolution", href: "#path" },
   { label: "About", href: "#about" },
   { label: "Stack", href: "#stack" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Footer() {
   const [showTop, setShowTop] = useState(false);
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (v) => setShowTop(v > 700));
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const id = href.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        const headerOffset = 72;
+        const elementPosition = el.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+        window.history.pushState(null, "", href);
+      }
+    }
+  };
 
   return (
     <footer className="border-t border-line py-8 md:py-10">
@@ -34,6 +53,7 @@ export default function Footer() {
               <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleLinkClick(e, link.href)}
                 className="font-mono text-xs uppercase tracking-[0.1em] text-secondary transition-colors hover:text-text"
               >
                 {link.label}
