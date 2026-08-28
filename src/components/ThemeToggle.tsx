@@ -24,7 +24,7 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
     <button
       type="button"
       onClick={toggleTheme}
-      className={`group relative flex h-9 w-9 items-center justify-center border border-line bg-surface text-secondary transition-colors duration-200 hover:border-line-strong hover:bg-raised hover:text-text ${className}`}
+      className={`group relative flex h-9 w-9 sm:h-9 sm:w-9 items-center justify-center border border-line bg-surface text-secondary transition-colors duration-200 hover:border-line-strong hover:bg-raised hover:text-text rounded-xs ${className}`}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       title={isDark ? "Switch to light theme" : "Switch to dark theme"}
     >

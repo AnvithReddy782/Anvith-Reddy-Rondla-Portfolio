@@ -319,7 +319,7 @@ function FlagshipCard({
     <motion.div
       initial={reduce ? false : { opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.05 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
     >
       <Card className="group relative border-line p-5 md:p-6 transition-all duration-300 hover:border-line-strong hover:shadow-xs bg-surface/90">
@@ -397,7 +397,7 @@ function StandardProjectCard({
     <motion.div
       initial={reduce ? false : { opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.05 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}
       className="h-full"
     >
@@ -434,14 +434,14 @@ function StandardProjectCard({
             variant="link"
             size="sm"
             onClick={onClick}
-            className="text-accent hover:underline flex items-center gap-1 p-0 text-xs"
+            className="text-accent hover:underline flex items-center gap-1.5 p-1 text-xs min-h-[36px]"
           >
             System Brief <ArrowRight size={11} />
           </Button>
-          <Button asChild variant="ghost" size="sm" className="text-muted hover:text-text p-0 text-xs">
+          <Button asChild variant="ghost" size="sm" className="text-muted hover:text-text px-2.5 text-xs min-h-[36px]">
             <Link
               href={`/projects/${project.slug}`}
-              className="flex items-center gap-1"
+              className="flex items-center gap-1.5"
             >
               PRD <ArrowUpRight size={11} />
             </Link>
@@ -471,7 +471,7 @@ function CompactProjectCard({
       onClick={onClick}
       initial={reduce ? false : { opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.05 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}
       className={`group relative flex cursor-pointer flex-col bg-surface p-5 text-left transition-colors duration-200 hover:bg-raised/40 md:p-6 ${
         isSingle ? "w-full" : ""
