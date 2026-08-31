@@ -39,7 +39,7 @@ export default function Hero() {
                   animate={{ y: 0 }}
                   transition={{ duration: 0.85, delay: 0.08, ease }}
                 >
-                  Systems that survive
+                  Systems that survive&nbsp;
                 </motion.span>
               </span>
               <span className="block overflow-hidden">
