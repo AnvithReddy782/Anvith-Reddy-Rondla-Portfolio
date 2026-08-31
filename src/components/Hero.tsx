@@ -27,7 +27,7 @@ export default function Hero() {
           <div className="lg:col-span-7 flex flex-col justify-center">
             <motion.div {...rise(0)} className="mb-2.5">
               <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
-                Anvith Reddy Rondla / Junior Product Manager
+                Anvith Reddy Rondla / Junior&nbsp;Product&nbsp;Manager
               </span>
             </motion.div>
 
