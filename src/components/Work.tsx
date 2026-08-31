@@ -498,8 +498,8 @@ function CompactProjectCard({
             {project.metric}
           </span>
         </div>
-        <span className="flex h-7 w-7 shrink-0 items-center justify-center border border-line text-muted transition-all duration-200 group-hover:border-accent group-hover:bg-accent group-hover:text-[var(--color-accent-contrast)] rounded-xs">
-          <ArrowUpRight size={13} />
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-line text-muted transition-all duration-200 group-hover:border-accent group-hover:bg-accent group-hover:text-[var(--color-accent-contrast)] rounded-xs">
+          <ArrowUpRight size={14} />
         </span>
       </div>
     </motion.button>
