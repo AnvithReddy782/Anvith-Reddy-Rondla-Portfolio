@@ -10,7 +10,7 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
   if (!mounted) {
     return (
       <div
-        className={`h-9 w-9 border border-line bg-surface flex items-center justify-center text-muted ${className}`}
+        className={`h-11 w-11 border border-line bg-surface flex items-center justify-center text-muted ${className}`}
         aria-hidden="true"
       >
         <span className="h-4 w-4 rounded-full bg-line" />
@@ -24,7 +24,7 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
     <button
       type="button"
       onClick={toggleTheme}
-      className={`group relative flex h-9 w-9 sm:h-9 sm:w-9 items-center justify-center border border-line bg-surface text-secondary transition-colors duration-200 hover:border-line-strong hover:bg-raised hover:text-text rounded-xs ${className}`}
+      className={`group relative flex h-11 w-11 items-center justify-center border border-line bg-surface text-secondary transition-colors duration-200 hover:border-line-strong hover:bg-raised hover:text-text rounded-xs ${className}`}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       title={isDark ? "Switch to light theme" : "Switch to dark theme"}
     >

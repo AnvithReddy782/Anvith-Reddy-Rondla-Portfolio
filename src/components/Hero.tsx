@@ -61,7 +61,7 @@ export default function Hero() {
             </motion.p>
 
             <motion.div {...rise(0.42)} className="mt-6 flex flex-wrap items-center gap-3">
-              <Button asChild variant="default" size="default" className="group rounded-full pl-5 pr-3">
+              <Button asChild variant="default" size="lg" className="group rounded-full pl-5 pr-3">
                 <a href="#work" className="flex items-center gap-2">
                   <span>View selected work</span>
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-black/10 dark:bg-white/20 transition-transform duration-300 group-hover:translate-y-0.5">
@@ -69,12 +69,12 @@ export default function Hero() {
                   </span>
                 </a>
               </Button>
-              <Button asChild variant="secondary" size="default" className="rounded-full px-5">
+              <Button asChild variant="secondary" size="lg" className="rounded-full px-5">
                 <a href={`mailto:${personalInfo.email}`}>
                   Email me
                 </a>
               </Button>
-              <Button asChild variant="outline" size="default" className="group rounded-full pl-4 pr-2.5">
+              <Button asChild variant="outline" size="lg" className="group rounded-full pl-4 pr-2.5">
                 <a href="/resume.pdf" download className="flex items-center gap-2">
                   <span>Resume</span>
                   <span className="flex h-5 w-5 items-center justify-center rounded-full bg-sunk text-muted transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent">

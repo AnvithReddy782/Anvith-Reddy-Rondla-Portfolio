@@ -112,7 +112,7 @@ export default function Navigation() {
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     aria-current={isActive ? "true" : undefined}
-                    className={`relative px-3 py-1 text-xs font-medium tracking-wide transition-colors duration-200 rounded-full ${
+                    className={`relative flex min-h-11 items-center px-3 text-xs font-medium tracking-wide transition-colors duration-200 rounded-full ${
                       isActive ? "text-text font-semibold" : "text-secondary hover:text-text"
                     }`}
                   >
@@ -142,7 +142,7 @@ export default function Navigation() {
           <div className="md:hidden flex items-center gap-2">
             <ThemeToggle />
             <button
-              className="flex h-9 w-9 items-center justify-center border border-line bg-surface text-text rounded-xs"
+              className="flex h-11 w-11 items-center justify-center border border-line bg-surface text-text rounded-xs"
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
