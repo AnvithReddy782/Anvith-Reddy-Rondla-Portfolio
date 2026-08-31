@@ -63,7 +63,7 @@ export default function About() {
             <div>
               <span className="text-[10px] uppercase text-muted block mb-0.5">Education</span>
               <span className="text-text font-medium block">B.Tech, CSE</span>
-              <span className="text-[11px] text-muted block">Holy Mary Inst.</span>
+              <span className="text-[11px] text-muted block">Holy Mary Institute</span>
             </div>
             <div>
               <span className="text-[10px] uppercase text-muted block mb-0.5">Currently Reading</span>
