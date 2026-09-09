@@ -5,7 +5,7 @@ import { ArrowDown, ArrowUpRight, Radio, Database, CheckCircle2, ShieldCheck, Ma
 import { personalInfo } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -108,9 +108,9 @@ export default function Hero() {
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 border-b border-line">
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-signal animate-pulse" />
-                  <CardTitle className="text-xs font-mono font-semibold uppercase tracking-wider text-text">
+                  <div className="text-xs font-mono font-semibold uppercase tracking-wider text-text">
                     Executive PM Summary
-                  </CardTitle>
+                  </div>
                 </div>
                 <Badge variant="signal">Live In Production</Badge>
               </CardHeader>
