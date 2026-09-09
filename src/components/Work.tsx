@@ -95,7 +95,7 @@ export default function Work() {
                 <div className="mb-4 flex items-baseline justify-between gap-4 border-b border-line pb-2.5">
                   <div className="flex items-baseline gap-2.5">
                     <Badge variant="accent" className="text-[10px]">Tier {tier.id}</Badge>
-                    <h3 className="font-heading text-base sm:text-lg font-semibold text-text">{tier.label}</h3>
+                    <div className="font-heading text-base sm:text-lg font-semibold text-text">{tier.label}</div>
                     <span className="hidden text-xs text-muted sm:inline">/ {tier.detail}</span>
                   </div>
                   <span className="tabular font-mono text-xs text-muted">
@@ -195,9 +195,9 @@ export default function Work() {
                     <StatusBadge status={selected.status} />
                     <span className="font-mono text-xs text-muted">{selected.category}</span>
                   </div>
-                  <h3 id="project-drawer-title" className="display-lg text-text">
+                  <h2 id="project-drawer-title" className="display-lg text-text">
                     {selected.title}
-                  </h3>
+                  </h2>
                   <p className="mt-2 text-xs sm:text-sm leading-relaxed text-secondary">
                     {selected.description}
                   </p>
@@ -219,7 +219,7 @@ export default function Work() {
                     selected.slug !== "field-reporter" && (
                       <div className="border border-line bg-sunk p-6 text-center">
                         <span className="font-mono text-xs text-muted">System Architecture Active</span>
-                        <h4 className="mt-1 font-heading text-base font-semibold text-text">{selected.metric}</h4>
+                        <div className="mt-1 font-heading text-base font-semibold text-text">{selected.metric}</div>
                       </div>
                     )}
                 </div>
@@ -333,9 +333,9 @@ function FlagshipCard({
               </div>
 
               <span className="font-mono text-[10px] uppercase tracking-wider text-muted">{project.category}</span>
-              <h4 className="mt-1 font-heading text-2xl font-semibold text-text group-hover:text-accent md:text-3xl transition-colors">
+              <h3 className="mt-1 font-heading text-2xl font-semibold text-text group-hover:text-accent md:text-3xl transition-colors">
                 {project.title}
-              </h4>
+              </h3>
 
               <p className="mt-2 text-xs sm:text-sm leading-relaxed text-secondary">
                 {project.description}
@@ -409,9 +409,9 @@ function StandardProjectCard({
           </div>
 
           <span className="font-mono text-[10px] uppercase tracking-wider text-accent">{project.category}</span>
-          <h4 className="mt-1 font-heading text-lg font-semibold text-text group-hover:text-accent md:text-xl transition-colors">
+          <h3 className="mt-1 font-heading text-lg font-semibold text-text group-hover:text-accent md:text-xl transition-colors">
             {project.title}
-          </h4>
+          </h3>
 
           <p className="mt-2 text-xs leading-relaxed text-secondary">
             {project.description}
@@ -484,9 +484,9 @@ function CompactProjectCard({
       </div>
 
       <span className="font-mono text-[10px] uppercase text-muted">{project.category}</span>
-      <h4 className="font-heading text-base font-semibold text-text group-hover:text-accent md:text-lg transition-colors">
+      <h3 className="font-heading text-base font-semibold text-text group-hover:text-accent md:text-lg transition-colors">
         {project.title}
-      </h4>
+      </h3>
       <p className="mt-1.5 text-xs leading-relaxed text-secondary">
         {project.description}
       </p>

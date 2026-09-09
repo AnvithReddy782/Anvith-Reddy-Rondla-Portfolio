@@ -145,7 +145,7 @@ export function AnnapurnaMockup() {
               <div className="flex items-start justify-between">
                 <div>
                   <span className="font-mono text-[10px] uppercase tracking-wider text-accent">Heritage Collection</span>
-                  <h4 className="font-heading text-base font-semibold text-text">Temple Kundan Choker</h4>
+                  <div className="font-heading text-base font-semibold text-text">Temple Kundan Choker</div>
                 </div>
                 <span className="font-mono text-sm font-semibold text-text">₹42,500</span>
               </div>

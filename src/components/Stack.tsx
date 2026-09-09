@@ -369,9 +369,9 @@ export default function Stack() {
 
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center justify-between gap-1.5">
-                              <h4 className="font-heading text-sm font-semibold text-text group-hover:text-accent transition-colors truncate">
+                              <h3 className="font-heading text-sm font-semibold text-text group-hover:text-accent transition-colors truncate">
                                 {item.name}
-                              </h4>
+                              </h3>
                               <Badge variant="secondary" className="text-[9px] px-1.5 py-0 shrink-0">
                                 {item.category}
                               </Badge>

@@ -115,7 +115,7 @@ export default async function ProjectPage({
                 project.slug !== "field-reporter" && (
                   <div className="border border-line bg-sunk p-8 text-center">
                     <span className="font-mono text-xs text-muted">System Benchmark</span>
-                    <h3 className="mt-2 font-heading text-2xl font-semibold text-text">{project.metric}</h3>
+                    <div className="mt-2 font-heading text-2xl font-semibold text-text">{project.metric}</div>
                     <p className="mt-2 text-xs text-secondary">{project.preview.label}</p>
                   </div>
                 )}
