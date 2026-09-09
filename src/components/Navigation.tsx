@@ -168,7 +168,7 @@ export default function Navigation() {
                     key={link.href}
                     href={link.href}
                     onClick={(e) => handleMobileNavClick(e, link.href)}
-                    className="flex items-center justify-between py-2.5 px-2 text-sm font-medium text-text hover:bg-surface border-b border-line/40"
+                    className="flex min-h-11 items-center justify-between px-2 text-sm font-medium text-text hover:bg-surface border-b border-line/40"
                   >
                     <span>{link.label}</span>
                     <span className="font-mono text-[10px] text-accent uppercase">{link.href}</span>
