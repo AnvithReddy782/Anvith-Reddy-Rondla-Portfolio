@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Class-based dark mode: `dark:` follows our `.dark` toggle, not the OS setting */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-bg: var(--theme-bg);
   --color-sunk: var(--theme-sunk);
@@ -35,7 +38,7 @@
   --theme-text: #161513;
   --theme-secondary: #545049;
   --theme-muted: #7a7469;
-  --theme-faint: #a8a193;
+  --theme-faint: #877f72;
 
   --theme-accent: #e65100;
   --theme-accent-hover: #f55f0a;
@@ -75,7 +78,7 @@
   --theme-text: #ede8dc;
   --theme-secondary: #a39d90;
   --theme-muted: #6f6b60;
-  --theme-faint: #45423a;
+  --theme-faint: #615d53;
 
   --theme-accent: #ff6b00;
   --theme-accent-hover: #ff8226;
